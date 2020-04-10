@@ -2,6 +2,8 @@ import React from 'react';
 import { View, Text} from 'react-native';
 import { Platform, StatusBar, StyleSheet } from 'react-native';
 import GestureRecognizer, {swipeDirections} from "react-native-swipe-gestures";
+import TouchableWithoutFeedback from 'react-native';
+import DoubleClick from "react-native-double-tap";
 
 function onSwipe(gestureName, navigation) {
     const {SWIPE_UP, SWIPE_DOWN, SWIPE_LEFT, SWIPE_RIGHT} = swipeDirections;
@@ -27,7 +29,13 @@ function onSwipe(gestureName, navigation) {
 
 function onSwipeRight(direction, navigation) {
     navigation.navigate('Home');
+};
+
+function onDoubleTap(navigation) {
+    navigation.navigate('SectionOverview');
+
 }
+
 
 export default function RoomOverviewScreen({ navigation }) {
     return (
@@ -35,7 +43,17 @@ export default function RoomOverviewScreen({ navigation }) {
             onSwipe={(direction, state) => onSwipe(direction, navigation )}
             onSwipeRight={(direction) => onSwipeRight(direction, navigation)}
         >
-            <Text>Room Screen</Text>
+                <View>
+                    <DoubleClick
+                        singleTap={() => {
+                            console.log("single tap");
+                        }}
+                        doubleTap={() => onDoubleTap(navigation)}
+                        delay={200}
+                    >
+                    <Text>Room Screen</Text>
+                    </DoubleClick>
+                </View>
         </GestureRecognizer>
     )
 }
