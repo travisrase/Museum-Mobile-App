@@ -1,179 +1,106 @@
 import * as WebBrowser from 'expo-web-browser';
 import * as React from 'react';
 import { Image, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
 
 import { MonoText } from '../components/StyledText';
 
-export default function HomeScreen() {
-  return (
-    <View style={styles.container}>
-      <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-        <View style={styles.welcomeContainer}>
-          <Image
-            source={
-              __DEV__
-                ? require('../assets/images/robot-dev.png')
-                : require('../assets/images/robot-prod.png')
-            }
-            style={styles.welcomeImage}
-          />
-        </View>
+const styles = StyleSheet.create({
+  homePageHeader: {
+    color: 'black',
+    textAlign: 'center',
+    fontStyle: 'normal',
+    fontWeight: 'bold',
+    fontSize: 30
+  },
+  bowdoinSeal: {
+    marginTop: 20,
+    width: 70,
+    height: 70,
+    alignSelf: 'center'
+  },
+  blackPageView: {
+    backgroundColor: 'black',
+    height: 400,
+    marginLeft: 5,
+    marginRight: 5,
+    alignSelf: 'center',
+    marginTop: 60
+  },
+  whitePageView: {
+    backgroundColor: 'white',
+    height: 380,
+    marginLeft: 10,
+    marginRight: 10,
+    alignSelf: 'center',
+    marginTop: 10
+  },
+  subheaderText: {
+    color: 'black',
+    textAlign: 'center',
+    fontStyle: 'normal',
+    fontWeight: 'bold',
+    fontSize: 25
+  },
+  bodyText: {
+    color: 'black',
+    textAlign: 'center',
+    fontStyle: 'normal',
+    fontSize: 17
+  }
+});
 
-        <View style={styles.getStartedContainer}>
-          <DevelopmentModeNotice />
-
-          <Text style={styles.getStartedText}>Open up the code for this screen:</Text>
-
-          <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
-            <MonoText>screens/HomeScreen.js</MonoText>
-          </View>
-
-          <Text style={styles.getStartedText}>
-            Change any of the text, save the file, and your app will automatically reload.
-          </Text>
-        </View>
-
-        <View style={styles.helpContainer}>
-          <TouchableOpacity onPress={handleHelpPress} style={styles.helpLink}>
-            <Text style={styles.helpLinkText}>Help, it didn’t automatically reload!</Text>
-          </TouchableOpacity>
-        </View>
-      </ScrollView>
-
-      <View style={styles.tabBarInfoContainer}>
-        <Text style={styles.tabBarInfoText}>This is a tab bar. You can edit it in:</Text>
-
-        <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-          <MonoText style={styles.codeHighlightText}>navigation/BottomTabNavigator.js</MonoText>
-        </View>
-      </View>
-    </View>
-  );
-}
-
-HomeScreen.navigationOptions = {
-  header: null,
-};
-
-function DevelopmentModeNotice() {
-  if (__DEV__) {
-    const learnMoreButton = (
-      <Text onPress={handleLearnMorePress} style={styles.helpLinkText}>
-        Learn more
-      </Text>
-    );
-
-    return (
-      <Text style={styles.developmentModeText}>
-        Development mode is enabled: your app will be slower but you can use useful development
-        tools. {learnMoreButton}
-      </Text>
-    );
-  } else {
-    return (
-      <Text style={styles.developmentModeText}>
-        You are not in development mode: your app will run at full speed.
-      </Text>
-    );
+function onSwipe(gestureName, navigation) {
+  const {SWIPE_UP, SWIPE_DOWN, SWIPE_LEFT, SWIPE_RIGHT} = swipeDirections;
+  //this.setState({gestureName: gestureName});
+  switch (gestureName) {
+    case SWIPE_UP:
+      console.log("UP")
+      // this.setState({backgroundColor: 'red'});
+      break;
+    case SWIPE_DOWN:
+      console.log("DOWN")
+      //  this.setState({backgroundColor: 'green'});
+      break;
+    case SWIPE_LEFT:
+      navigation.navigate('RoomOverview')
+      //  this.setState({backgroundColor: 'blue'});
+      break;
+    case SWIPE_RIGHT:
+      break;
   }
 }
 
-function handleLearnMorePress() {
-  WebBrowser.openBrowserAsync('https://docs.expo.io/versions/latest/workflow/development-mode/');
+function onSwipeLeft(direction, navigation) {
+  navigation.navigate('RoomOverview');
 }
 
-function handleHelpPress() {
-  WebBrowser.openBrowserAsync(
-    'https://docs.expo.io/versions/latest/get-started/create-a-new-app/#making-your-first-change'
-  );
+export default function HomeScreen({ navigation }) {
+  return (
+      <GestureRecognizer
+          onSwipe={(direction, state) => onSwipe(direction, navigation )}
+          onSwipeLeft={(direction) => onSwipeLeft(direction, navigation)}
+      >
+        <Text style = {styles.homePageHeader}>
+          Bowdoin Art Muesem
+        </Text>
+        <Image
+            style={styles.bowdoinSeal}
+            source={require('../assets/images/Bowdoin_Seal.png')}
+        />
+        <View style = {styles.blackPageView}>
+          <View style = {styles.whitePageView}>
+            <Text style = {styles.subheaderText}>
+              Welcome to the Bowdoin Art Muesem App!
+            </Text>
+            <Text style = {styles.bodyText}>
+              You are currently in _______
+            </Text>
+            <Text style = {styles.bodyText}>
+              To learn more about this exhibit swipe left
+            </Text>
+          </View>
+        </View>
+      </GestureRecognizer>
+  )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-  developmentModeText: {
-    marginBottom: 20,
-    color: 'rgba(0,0,0,0.4)',
-    fontSize: 14,
-    lineHeight: 19,
-    textAlign: 'center',
-  },
-  contentContainer: {
-    paddingTop: 30,
-  },
-  welcomeContainer: {
-    alignItems: 'center',
-    marginTop: 10,
-    marginBottom: 20,
-  },
-  welcomeImage: {
-    width: 100,
-    height: 80,
-    resizeMode: 'contain',
-    marginTop: 3,
-    marginLeft: -10,
-  },
-  getStartedContainer: {
-    alignItems: 'center',
-    marginHorizontal: 50,
-  },
-  homeScreenFilename: {
-    marginVertical: 7,
-  },
-  codeHighlightText: {
-    color: 'rgba(96,100,109, 0.8)',
-  },
-  codeHighlightContainer: {
-    backgroundColor: 'rgba(0,0,0,0.05)',
-    borderRadius: 3,
-    paddingHorizontal: 4,
-  },
-  getStartedText: {
-    fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
-    lineHeight: 24,
-    textAlign: 'center',
-  },
-  tabBarInfoContainer: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    ...Platform.select({
-      ios: {
-        shadowColor: 'black',
-        shadowOffset: { width: 0, height: -3 },
-        shadowOpacity: 0.1,
-        shadowRadius: 3,
-      },
-      android: {
-        elevation: 20,
-      },
-    }),
-    alignItems: 'center',
-    backgroundColor: '#fbfbfb',
-    paddingVertical: 20,
-  },
-  tabBarInfoText: {
-    fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
-    textAlign: 'center',
-  },
-  navigationFilename: {
-    marginTop: 5,
-  },
-  helpContainer: {
-    marginTop: 15,
-    alignItems: 'center',
-  },
-  helpLink: {
-    paddingVertical: 15,
-  },
-  helpLinkText: {
-    fontSize: 14,
-    color: '#2e78b7',
-  },
-});
