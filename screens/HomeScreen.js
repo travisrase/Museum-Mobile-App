@@ -5,94 +5,49 @@ import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
 
 import { MonoText } from '../components/StyledText';
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-  developmentModeText: {
-    marginBottom: 20,
-    color: 'rgba(0,0,0,0.4)',
-    fontSize: 14,
-    lineHeight: 19,
+  homePageHeader: {
+    color: 'black',
     textAlign: 'center',
+    fontStyle: 'normal',
+    fontWeight: 'bold',
+    fontSize: 30
   },
-  contentContainer: {
-    paddingTop: 30,
+  bowdoinSeal: {
+    marginTop: 20,
+    width: 70,
+    height: 70,
+    alignSelf: 'center'
   },
-  welcomeContainer: {
-    alignItems: 'center',
-    marginTop: 10,
-    marginBottom: 20,
+  blackPageView: {
+    backgroundColor: 'black',
+    height: 400,
+    marginLeft: 5,
+    marginRight: 5,
+    alignSelf: 'center',
+    marginTop: 60
   },
-  welcomeImage: {
-    width: 100,
-    height: 80,
-    resizeMode: 'contain',
-    marginTop: 3,
-    marginLeft: -10,
+  whitePageView: {
+    backgroundColor: 'white',
+    height: 380,
+    marginLeft: 10,
+    marginRight: 10,
+    alignSelf: 'center',
+    marginTop: 10
   },
-  getStartedContainer: {
-    alignItems: 'center',
-    marginHorizontal: 50,
-  },
-  homeScreenFilename: {
-    marginVertical: 7,
-  },
-  codeHighlightText: {
-    color: 'rgba(96,100,109, 0.8)',
-  },
-  codeHighlightContainer: {
-    backgroundColor: 'rgba(0,0,0,0.05)',
-    borderRadius: 3,
-    paddingHorizontal: 4,
-  },
-  getStartedText: {
-    fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
-    lineHeight: 24,
+  subheaderText: {
+    color: 'black',
     textAlign: 'center',
+    fontStyle: 'normal',
+    fontWeight: 'bold',
+    fontSize: 25
   },
-  tabBarInfoContainer: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    ...Platform.select({
-      ios: {
-        shadowColor: 'black',
-        shadowOffset: { width: 0, height: -3 },
-        shadowOpacity: 0.1,
-        shadowRadius: 3,
-      },
-      android: {
-        elevation: 20,
-      },
-    }),
-    alignItems: 'center',
-    backgroundColor: '#fbfbfb',
-    paddingVertical: 20,
-  },
-  tabBarInfoText: {
-    fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
+  bodyText: {
+    color: 'black',
     textAlign: 'center',
-  },
-  navigationFilename: {
-    marginTop: 5,
-  },
-  helpContainer: {
-    marginTop: 15,
-    alignItems: 'center',
-  },
-  helpLink: {
-    paddingVertical: 15,
-  },
-  helpLinkText: {
-    fontSize: 14,
-    color: '#2e78b7',
-  },
+    fontStyle: 'normal',
+    fontSize: 17
+  }
 });
-
 
 function onSwipe(gestureName, navigation) {
   const {SWIPE_UP, SWIPE_DOWN, SWIPE_LEFT, SWIPE_RIGHT} = swipeDirections;
@@ -125,10 +80,27 @@ export default function HomeScreen({ navigation }) {
           onSwipe={(direction, state) => onSwipe(direction, navigation )}
           onSwipeLeft={(direction) => onSwipeLeft(direction, navigation)}
       >
-          <Text>Home Screen</Text>
+      <Text style = {styles.homePageHeader}>
+        Bowdoin Art Muesem 
+      </Text>
+      <Image
+        style={styles.bowdoinSeal}
+        source={require('../assets/images/Bowdoin_Seal.png')}
+      />
+      <View style = {styles.blackPageView}>
+        <View style = {styles.whitePageView}>
+          <Text style = {styles.subheaderText}>
+            Welcome to the Bowdoin Art Muesem App!
+          </Text> 
+          <Text style = {styles.bodyText}>
+            You are currently in _______
+          </Text> 
+          <Text style = {styles.bodyText}>
+            To learn more about this exhibit swipe left
+          </Text> 
+        </View>
+      </View>
       </GestureRecognizer>
-
-
   )
 }
 
