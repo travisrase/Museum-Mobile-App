@@ -1,8 +1,6 @@
 import React from 'react';
 import { View, Text} from 'react-native';
-import { Platform, StatusBar, StyleSheet } from 'react-native';
 import GestureRecognizer, {swipeDirections} from "react-native-swipe-gestures";
-import TouchableWithoutFeedback from 'react-native';
 import DoubleClick from "react-native-double-tap";
 
 function onSwipe(gestureName, navigation) {
