@@ -7,12 +7,17 @@ import { createStackNavigator } from '@react-navigation/stack';
 import RoomOverviewScreen from "./screens/RoomOverviewScreen";
 import HomeScreen from "./screens/HomeScreen";
 import SectionOverviewScreen from "./screens/SectionOverviewScreen";
+
+
+import styles from './styles/App.scss';
+
 const Stack = createStackNavigator();
 
 
 function App() {
     return (
-        <NavigationContainer>
+
+            <NavigationContainer>
             <Stack.Navigator>
                 <Stack.Screen name="Home" component={HomeScreen} />
                 <Stack.Screen name="RoomOverview" component={RoomOverviewScreen} />
@@ -89,10 +94,3 @@ export default App
 //     );
 //   }
 // }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-});
