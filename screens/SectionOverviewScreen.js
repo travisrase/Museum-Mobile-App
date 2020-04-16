@@ -29,22 +29,33 @@ function onDoubleTap(navigation) {
     navigation.navigate('ArtPiece');
 }
 
+function onSwipeLeft(direction, navigation) {
+    navigation.navigate('ArtPiece');
+}
+
   
 
 
 export default function SectionOverviewScreen() {
     return (
-        <View>
-            <DoubleClick
+        <GestureRecognizer
+            onSwipe={(direction, state) => onSwipe(direction, navigation )}
+            onSwipeRight={(direction) => onSwipeRight(direction, navigation)}
+            onSwipeLeft={(direction) => onSwipeLeft(direction, navigation)}
+        >
+                <View>
+                <DoubleClick
                         singleTap={() => {
                             console.log("single tap");
                         }}
                         doubleTap={() => onDoubleTap(navigation)}
                         delay={200}
                     >
-                    <Text>Section Overview Screen</Text>
-                    </DoubleClick>
-        </View>
-
+                    <Text>
+                        Section Overview
+                    </Text>
+                </DoubleClick>
+                </View>
+        </GestureRecognizer>
     )
 }
