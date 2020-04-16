@@ -4,7 +4,7 @@ import { Image, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react
 import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
 import styles from "./ArtPieceScreenStyles";
 
-class HomeScreen extends React.Component {
+class ArtPieceScreen extends React.Component {
 
 
 
@@ -21,10 +21,11 @@ class HomeScreen extends React.Component {
          //  this.setState({backgroundColor: 'green'});
          break;
        case SWIPE_LEFT:
-         navigation.navigate('RoomOverview')
-         //  this.setState({backgroundColor: 'blue'});
+         console.log("LEFT")
+         //this.setState({backgroundColor: 'blue'});
          break;
        case SWIPE_RIGHT:
+         navigation.navigate('RoomOverview')
          break;
      }
     }
@@ -36,15 +37,19 @@ class HomeScreen extends React.Component {
             onSwipeRight={(direction) => onSwipeRight(direction, navigation)}
         >
                 <View>
-                    <DoubleClick
-                        singleTap={() => {
-                            console.log("single tap");
-                        }}
-                        doubleTap={() => onDoubleTap(navigation)}
-                        delay={200}
-                    >
-                    <Text>Art Piece Screen</Text>
-                    </DoubleClick>
+                    <Text style {styles.sectioName}>
+                      Art Piece Screen
+                    </Text>
+                    <View style = {styles.column}>
+                        <Image
+                          source={require('../../assets/images/Apollo-and-Daphne.png')}
+                        />
+                        <Text style = {styles.bodyText}>
+                          Title: Apollo and Daphne
+                          Medium: oil on canvas
+                          Dimensions: 24 3/8 in. by 19 1/4 in.
+                        </Text>
+                    </View>
                 </View>
         </GestureRecognizer>
         )

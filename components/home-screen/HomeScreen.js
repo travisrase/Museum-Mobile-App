@@ -103,7 +103,7 @@ class HomeScreen extends React.Component {
                     <View style = {styles.blackPageView}>
                         <View style = {styles.whitePageView}>
                             <Text style = {styles.subheaderText}>
-                                Welcome to the Bowdoin Art Muesem App!
+                                Welcome to the Bowdoin Art Museum App!
                             </Text>
                             <Text style = {styles.bodyText}>
                                 You are currently in _______
