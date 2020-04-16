@@ -16,7 +16,8 @@ function onSwipe(gestureName, navigation) {
             //  this.setState({backgroundColor: 'green'});
             break;
         case SWIPE_LEFT:
-            console.log("LEFT")
+            //console.log("LEFT")
+            navigation.navigate('ArtPiece')
             //  this.setState({backgroundColor: 'blue'});
             break;
         case SWIPE_RIGHT:

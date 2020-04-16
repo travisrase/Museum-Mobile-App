@@ -7,7 +7,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import RoomOverviewScreen from "./screens/RoomOverviewScreen";
 import HomeScreen from "./screens/HomeScreen";
 import SectionOverviewScreen from "./screens/SectionOverviewScreen";
-
+import ArtPieceScreen from "./screens/ArtPieceScreen";
 
 import styles from './styles/App.scss';
 
@@ -22,6 +22,7 @@ function App() {
                 <Stack.Screen name="Home" component={HomeScreen} />
                 <Stack.Screen name="RoomOverview" component={RoomOverviewScreen} />
                 <Stack.Screen name="SectionOverview" component={SectionOverviewScreen} />
+                <Stack.Screen name="ArtPiece" component={ArtPieceScreen} />
             </Stack.Navigator>
         </NavigationContainer>
 
