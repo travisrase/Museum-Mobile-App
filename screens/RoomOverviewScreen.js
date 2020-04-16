@@ -16,8 +16,8 @@ function onSwipe(gestureName, navigation) {
             //  this.setState({backgroundColor: 'green'});
             break;
         case SWIPE_LEFT:
-            //console.log("LEFT")
-            navigation.navigate('ArtPiece')
+            console.log("LEFT")
+            navigation.navigate('SectionOverview')
             //  this.setState({backgroundColor: 'blue'});
             break;
         case SWIPE_RIGHT:
@@ -30,17 +30,21 @@ function onSwipeRight(direction, navigation) {
     navigation.navigate('Home');
 };
 
+function onSwipeLeft(direction, navigation) {
+    navigation.navigate('SectionOverview');
+};
+
 function onDoubleTap(navigation) {
     navigation.navigate('SectionOverview');
-
 }
 
 
 export default function RoomOverviewScreen({ navigation }) {
     return (
         <GestureRecognizer
-            onSwipe={(direction, state) => onSwipe(direction, navigation )}
-            onSwipeRight={(direction) => onSwipeRight(direction, navigation)}
+            onSwipe={(direction, state) => onSwipe(direction, this.props.navigation )}
+            onSwipeRight={(direction) => onSwipeRight(direction, this.props.navigation)}
+            onSwipeLeft={(direction) => onSwipeLeft(direction, this.props.navigation)}
         >
                 <View>
                     <DoubleClick

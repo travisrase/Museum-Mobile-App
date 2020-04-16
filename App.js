@@ -25,7 +25,6 @@ function App() {
                 <Stack.Screen name="ArtPiece" component={ArtPieceScreen} />
             </Stack.Navigator>
         </NavigationContainer>
-
     );
 }
 //

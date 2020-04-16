@@ -2,6 +2,7 @@ import * as WebBrowser from 'expo-web-browser';
 import * as React from 'react';
 import { Image, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
+import { useNavigation } from '@react-navigation/native';
 import styles from "./homeScreenStyles";
 
 // const styles = StyleSheet.create({
@@ -55,7 +56,7 @@ import styles from "./homeScreenStyles";
 
 class HomeScreen extends React.Component {
 
-
+ //navigation = this.props.navigation
 
  onSwipe(gestureName, navigation) {
   const {SWIPE_UP, SWIPE_DOWN, SWIPE_LEFT, SWIPE_RIGHT} = swipeDirections;
@@ -70,7 +71,7 @@ class HomeScreen extends React.Component {
       //  this.setState({backgroundColor: 'green'});
       break;
     case SWIPE_LEFT:
-      navigation.navigate('RoomOverview')
+        navigation.navigate('RoomOverview')
       //  this.setState({backgroundColor: 'blue'});
       break;
     case SWIPE_RIGHT:
@@ -90,11 +91,11 @@ class HomeScreen extends React.Component {
         return(
             <View style={styles.container}>
                 <GestureRecognizer
-                    onSwipe={(direction, state) => this.onSwipe(direction, navigation )}
-                    onSwipeLeft={(direction) => this.onSwipeLeft(direction, navigation)}
+                    onSwipe={(direction, state) => this.onSwipe(direction, this.props.navigation )}
+                    onSwipeLeft={(direction) => this.onSwipeLeft(direction, this.props.navigation)}
                 >
                     <Text style = {styles.homePageHeader}>
-                        Bowdoin Art Muesem
+                        Bowdoin Art Museum
                     </Text>
                     <Image
                         style={styles.bowdoinSeal}

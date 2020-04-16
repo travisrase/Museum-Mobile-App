@@ -37,7 +37,7 @@ class ArtPieceScreen extends React.Component {
             onSwipeRight={(direction) => onSwipeRight(direction, navigation)}
         >
                 <View>
-                    <Text style {styles.sectioName}>
+                    <Text style={styles.sectionName}>
                       Art Piece Screen
                     </Text>
                     <View style = {styles.column}>
