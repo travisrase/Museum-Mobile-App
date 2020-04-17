@@ -24,7 +24,8 @@ class SectionOverviewScreen extends React.Component {
                 //  this.setState({backgroundColor: 'blue'});
                 break;
             case SWIPE_RIGHT:
-                navigation.navigate('SectionOverview')
+                console.log("RIGHT")
+                navigation.navigate('RoomOverview')
                 break;
         }
     }
@@ -35,26 +36,25 @@ class SectionOverviewScreen extends React.Component {
 
     render() {
         return (
+            <GestureRecognizer
+            onSwipe={(direction, state) => this.onSwipe(direction, this.props.navigation)}
+            >
             <View style={styles.container}>
-                <GestureRecognizer
-                    onSwipe={(direction, state) => this.onSwipe(direction, this.props.navigation)}
-                //onSwipeRight={(direction) => onSwipeRight(direction, this.props.navigation)}
-                //onSwipeLeft={(direction) => onSwipeLeft(direction, this.props.navigation)}
-                >
                     <View>
                         <DoubleClick
                             singleTap={() => {
                                 console.log("single tap");
                             }}
                             doubleTap={() => this.onDoubleTap(this.props.navigation)}
-                            delay={200}
+                            delay={300}
                         >
-                            <Text>Section Screen</Text>
+                            <Text style = {styles.header}>Section Screen</Text>
                         </DoubleClick>
                     </View>
-                </GestureRecognizer>
+                
             </View>
-        );
+        </GestureRecognizer>
+        )
     }
 }
 

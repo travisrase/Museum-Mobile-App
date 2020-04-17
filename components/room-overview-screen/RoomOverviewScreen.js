@@ -46,7 +46,7 @@ class RoomOverviewScreen extends React.Component {
                                 console.log("single tap");
                             }}
                             doubleTap={() => this.onDoubleTap(this.props.navigation)}
-                            delay={200}
+                            delay={300}
                         >
                             <Text style={styles.header}>
                                 Room Screen

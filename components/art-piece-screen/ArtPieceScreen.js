@@ -40,26 +40,29 @@ class ArtPieceScreen extends React.Component {
             <GestureRecognizer
             onSwipe={(direction, state) => this.onSwipe(direction, this.props.navigation )}
             //onSwipeRight={(direction) => onSwipeRight(direction, navigation)}
-        >
-                <View styles = {styles.container}>
-                    <Text style={styles.sectionName}>
-                      Art Piece Screen
-                    </Text>
-                    <View styles = {styles.column}>
-                          <Image style = {{
-                          height: 280,
-                          width: 300
-                          }}
+        >       
+        <View>
+          <Text style = {styles.header}>
+            Title
+          </Text>
+                <View style = {styles.columnLayout}>
+                <Image style = {styles.image}
                           source={require('../../assets/images/Apollo-and-Daphne.png')}
-                          />
-
-                          <Text style = {styles.bodyText}>
+                          /> 
+                    <View style = 
+                      {{position: 'relative', top: '50%'}}>
+                    <Text style = {styles.bodyText}>
                             Title: Apollo and Daphne
+                    </Text> 
+                    <Text style = {styles.bodyText}>
                             Medium: oil on canvas
+                    </Text>
+                    <Text style = {styles.bodyText}>
                             Dimensions: 24 3/8 in. by 19 1/4 in.
-                          </Text>
+                    </Text>
                     </View>
                 </View>
+          </View>
         </GestureRecognizer>
         )
     }

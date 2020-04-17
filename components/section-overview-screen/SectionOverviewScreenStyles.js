@@ -5,12 +5,13 @@ import GlobalVariables from '../../styles/variables'
 
 
 const styles = StyleSheet.create({
-    homePageHeader: {
+    header: {
         color: GlobalVariables.commonColors.color,
         textAlign: 'center',
         fontStyle: 'normal',
         fontWeight: 'bold',
-        fontSize: 40
+        fontSize: 40,
+        marginTop: 20
     },
     bowdoinSeal: {
         marginTop: 20,

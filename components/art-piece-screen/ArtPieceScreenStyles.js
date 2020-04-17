@@ -5,32 +5,35 @@ import GlobalVariables from '../../styles/variables'
 
 
 const styles = StyleSheet.create({
-    sectionName: {
+    header: {
+        color: GlobalVariables.commonColors.color,
         textAlign: 'center',
         fontStyle: 'normal',
         fontWeight: 'bold',
-        fontSize: 24
+        fontSize: 40, 
+        marginTop: 20
     },
     bodyText: {
-        textAlign: 'center',
+        textAlign: 'left',
         fontStyle: 'normal',
         fontWeight: 'bold',
-        fontSize: 24
+        fontSize: 20,
+        borderWidth: 1,
+        borderColor: GlobalVariables.commonColors.color
     },
-    column: {
-        flex: 1,
-        width: '50%',
+    columnLayout: {
         flexDirection: 'row',
-        justifyContent: 'space-around',
-        alignItems: 'center',
-        marginTop: 50
+        alignItems: 'flex-start',
+        borderWidth: 5,
+        borderColor: 'black'
     },
     image: {
-        flex: 1,
-        resizeMode: 'contain',
-        alignSelf: 'center',
-        width: 380,
-        height: 400
+        width: '50%',
+        marginRight:10,
+        marginLeft:10,
+        resizeMode:'contain',
+        borderWidth: 1,
+        borderColor: GlobalVariables.commonColors.color
     }
 });
 
