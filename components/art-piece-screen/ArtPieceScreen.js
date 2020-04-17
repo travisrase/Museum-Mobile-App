@@ -3,9 +3,13 @@ import * as React from 'react';
 import { Image, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
 import styles from "./ArtPieceScreenStyles";
+import { Dimensions } from 'react-native';
 
 class ArtPieceScreen extends React.Component {
 
+  //store piece title etc as variables
+  //make this class a type of interface? not sure proper term
+  //so that it can be replicated
 
 
     onSwipe(gestureName, navigation) {
@@ -14,6 +18,7 @@ class ArtPieceScreen extends React.Component {
      switch (gestureName) {
        case SWIPE_UP:
          console.log("UP")
+         navigation.navigate('Home')
          // this.setState({backgroundColor: 'red'});
          break;
        case SWIPE_DOWN:
@@ -33,25 +38,31 @@ class ArtPieceScreen extends React.Component {
     render(){
         return(
             <GestureRecognizer
-            onSwipe={(direction, state) => onSwipe(direction, navigation )}
-            onSwipeRight={(direction) => onSwipeRight(direction, navigation)}
+            onSwipe={(direction, state) => this.onSwipe(direction, this.props.navigation )}
+            //onSwipeRight={(direction) => onSwipeRight(direction, navigation)}
         >
-                <View>
+                <View styles = {styles.container}>
                     <Text style={styles.sectionName}>
                       Art Piece Screen
                     </Text>
-                    <View style = {styles.column}>
-                        <Image
+                    <View styles = {styles.column}>
+                          <Image style = {{
+                          height: 280,
+                          width: 300
+                          }}
                           source={require('../../assets/images/Apollo-and-Daphne.png')}
-                        />
-                        <Text style = {styles.bodyText}>
-                          Title: Apollo and Daphne
-                          Medium: oil on canvas
-                          Dimensions: 24 3/8 in. by 19 1/4 in.
-                        </Text>
+                          />
+
+                          <Text style = {styles.bodyText}>
+                            Title: Apollo and Daphne
+                            Medium: oil on canvas
+                            Dimensions: 24 3/8 in. by 19 1/4 in.
+                          </Text>
                     </View>
                 </View>
         </GestureRecognizer>
         )
     }
 }
+
+export default ArtPieceScreen;

@@ -23,7 +23,11 @@ export default GlobalVariables = {
         backgroundGray: '#ececec',
         grayColor: 'gray',
         lightGrayBackground: '#e7e7e7'
+
     },
+    //Section headers
+    //Subheaders
+    //body text
 };
 
 

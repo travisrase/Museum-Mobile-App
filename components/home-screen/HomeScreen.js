@@ -5,55 +5,6 @@ import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
 import { useNavigation } from '@react-navigation/native';
 import styles from "./homeScreenStyles";
 
-// const styles = StyleSheet.create({
-//     homePageHeader: {
-//         color: commonColors.themeColors.colors,
-//         textAlign: 'center',
-//         fontStyle: 'normal',
-//         fontWeight: 'bold',
-//         fontSize: 30
-//     },
-//     bowdoinSeal: {
-//         marginTop: 20,
-//         width: 70,
-//         height: 70,
-//         alignSelf: 'center'
-//     },
-//     blackPageView: {
-//         backgroundColor: 'black',
-//         height: 400,
-//         marginLeft: 5,
-//         marginRight: 5,
-//         alignSelf: 'center',
-//         marginTop: 60
-//     },
-//     whitePageView: {
-//         backgroundColor: 'white',
-//         height: 380,
-//         marginLeft: 10,
-//         marginRight: 10,
-//         alignSelf: 'center',
-//         marginTop: 10
-//     },
-//     subheaderText: {
-//         color: 'black',
-//         textAlign: 'center',
-//         fontStyle: 'normal',
-//         fontWeight: 'bold',
-//         fontSize: 25
-//     },
-//     bodyText: {
-//         color: 'black',
-//         textAlign: 'center',
-//         fontStyle: 'normal',
-//         fontSize: 17
-//     }
-//
-// })
-
-
-
-
 class HomeScreen extends React.Component {
 
  //navigation = this.props.navigation
@@ -84,15 +35,10 @@ class HomeScreen extends React.Component {
 }
 
     render() {
-
-     console.log(styles.homePageHeader.color)
-
-
         return(
             <View style={styles.container}>
                 <GestureRecognizer
                     onSwipe={(direction, state) => this.onSwipe(direction, this.props.navigation )}
-                    onSwipeLeft={(direction) => this.onSwipeLeft(direction, this.props.navigation)}
                 >
                     <Text style = {styles.homePageHeader}>
                         Bowdoin Art Museum
