@@ -1,10 +1,15 @@
 'use strict'
 
 import {StyleSheet} from "react-native";
-import GlobalVariables from '../../styles/variables'
+import GlobalVariables from '../../styles/variables';
+import {  Dimensions } from 'react-native';
 
+let screenHeight = Dimensions.get("window").height
 
 const styles = StyleSheet.create({
+    container: {
+       height: screenHeight
+    },
     header: {
         color: GlobalVariables.commonColors.color,
         textAlign: 'center',
