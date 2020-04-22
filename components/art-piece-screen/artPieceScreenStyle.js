@@ -19,6 +19,8 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 20,
         borderWidth: 1,
+        flexShrink: 1,
+        width: '50%',
         borderColor: GlobalVariables.commonColors.color
     },
     columnLayout: {
@@ -32,6 +34,7 @@ const styles = StyleSheet.create({
         marginRight:10,
         marginLeft:10,
         resizeMode:'contain',
+        
         borderWidth: 1,
         borderColor: GlobalVariables.commonColors.color
     }
