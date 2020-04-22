@@ -1,4 +1,12 @@
 let GlobalVariables;
+import { Dimensions } from 'react-native';
+const width = Dimensions.get('window').width;
+const height = Dimensions.get('window').height;
+const isSmallDevice = width < 375;
+
+
+//how much do we care about fonts??
+//we could use specific accessible fonts that are more aesthetically pleasing, or stick with arial
 
 export default GlobalVariables = {
     container: {
@@ -19,8 +27,40 @@ export default GlobalVariables = {
         color: '#29acdc',
         backgroundGray: '#ececec',
         grayColor: 'gray',
-        lightGrayBackground: '#e7e7e7'
+        lightGrayBackground: '#e7e7e7',
+        contGreen: '00ff00',
+        contBlue: '00d4d4',
+        contYellow: 'f7ca18',
+        contOrange: 'ff6347',
+        contRed: 'ff0000',
+        contPurple: 'bf6ee0'
     },
+    window: {
+        width,
+        height,
+    },
+    bodyText: {
+        color: 'black',
+        fontSize: '18'
+    },
+    //Screen Titles
+    headerText: {
+        color: GlobalVariables.commonColors.color,
+        textAlign: 'center',
+        fontStyle: 'normal',
+        fontWeight: 'bold',
+        fontSize: 40
+    },
+    //subheaders
+    header: {
+        color: GlobalVariables.commonColors.color,
+        fontWeight: 'bold',
+        fontSize: 25
+    },
+    //body text
+    body: {
+        fontSize: 18
+    }
 };
 
 
