@@ -1,61 +1,10 @@
 import * as WebBrowser from 'expo-web-browser';
 import * as React from 'react';
-import { Image, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image, Platform, StyleSheet, Text, TouchableOpacity, View, Button } from 'react-native';
 import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
 import styles from "./homeScreenStyle";
 
-// const styles = StyleSheet.create({
-//     homePageHeader: {
-//         color: commonColors.themeColors.colors,
-//         textAlign: 'center',
-//         fontStyle: 'normal',
-//         fontWeight: 'bold',
-//         fontSize: 30
-//     },
-//     bowdoinSeal: {
-//         marginTop: 20,
-//         width: 70,
-//         height: 70,
-//         alignSelf: 'center'
-//     },
-//     blackPageView: {
-//         backgroundColor: 'black',
-//         height: 400,
-//         marginLeft: 5,
-//         marginRight: 5,
-//         alignSelf: 'center',
-//         marginTop: 60
-//     },
-//     whitePageView: {
-//         backgroundColor: 'white',
-//         height: 380,
-//         marginLeft: 10,
-//         marginRight: 10,
-//         alignSelf: 'center',
-//         marginTop: 10
-//     },
-//     subheaderText: {
-//         color: 'black',
-//         textAlign: 'center',
-//         fontStyle: 'normal',
-//         fontWeight: 'bold',
-//         fontSize: 25
-//     },
-//     bodyText: {
-//         color: 'black',
-//         textAlign: 'center',
-//         fontStyle: 'normal',
-//         fontSize: 17
-//     }
-//
-// })
-
-
-
-
 class HomeScreen extends React.Component {
-
-
 
     onSwipe(gestureName, navigation) {
         const {SWIPE_UP, SWIPE_DOWN, SWIPE_LEFT, SWIPE_RIGHT} = swipeDirections;
@@ -83,12 +32,8 @@ class HomeScreen extends React.Component {
     }
 
     render() {
-
         console.log(styles.homePageHeader.color)
-
-
         return(
-
             <View style={styles.container} accessible={true}>
                 <GestureRecognizer
                     onSwipe={(direction, state) => this.onSwipe(direction, this.props.navigation )}
@@ -104,14 +49,25 @@ class HomeScreen extends React.Component {
                     <View style = {styles.blackPageView}>
                         <View style = {styles.whitePageView}>
                             <Text style = {styles.subheaderText}>
-                                Welcome to the Bowdoin Art Museum App!
+                                Welcome!
                             </Text>
-                            <Text style = {styles.bodyText}>
-                                You are currently in _______
+                        <View style = {styles.locationView}>
+                            <Text style = {styles.subheaderText}>
+                                Your Location
+                                {"\n"}
                             </Text>
-                            <Text style = {styles.bodyText}>
-                                To learn more about this exhibit swipe left
+                            <Text style = {styles.subheaderText}>
+                                Room: _____
                             </Text>
+                            <Text style = {styles.subheaderText}>
+                                Section: _____
+                            </Text>
+                        </View>
+                        <TouchableOpacity style = {styles.sectionOverviewButton}>
+                            <Text style = {styles.sectionOverviewButtonText}>
+                                Section Overview
+                            </Text>
+                        </TouchableOpacity>
                         </View>
                     </View>
                 </GestureRecognizer>

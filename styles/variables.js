@@ -15,18 +15,26 @@ export default GlobalVariables = {
         flexWrap: 'wrap'
     },
     primaryButton: {
-        flex: 1,
-        height: 70,
-        backgroundColor: 'red',
+        height: 60,
+        width: 200,
+        backgroundColor: 'white',
         justifyContent: 'center',
+        borderColor: '#29acdc',
+        borderWidth: 3,
         alignItems: 'center',
         marginLeft: 20,
-        marginRight: 20
+        marginRight: 20,
+        marginTop: 20,
+        borderRadius: 10,
+    },
+    buttonText: {
+        color: '#29acdc',
+        fontSize: 23,
     },
     commonColors: {
         color: '#29acdc',
         backgroundGray: '#ececec',
-        grayColor: 'gray',
+        grayColor: '#f0f0f0',
         lightGrayBackground: '#e7e7e7',
         contGreen: '00ff00',
         contBlue: '00d4d4',
@@ -45,7 +53,7 @@ export default GlobalVariables = {
     },
     //Screen Titles
     headerText: {
-        color: GlobalVariables.commonColors.color,
+        color: '#29acdc',
         textAlign: 'center',
         fontStyle: 'normal',
         fontWeight: 'bold',
@@ -53,9 +61,10 @@ export default GlobalVariables = {
     },
     //subheaders
     header: {
-        color: GlobalVariables.commonColors.color,
+        color: '#29acdc',
         fontWeight: 'bold',
-        fontSize: 25
+        fontSize: 25,
+        textAlign: 'center',
     },
     //body text
     body: {
