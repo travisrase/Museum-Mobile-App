@@ -1,12 +1,10 @@
 import * as React from 'react';
-import { Image, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image, Platform, StyleSheet, Text, TouchableOpacity, View, Button } from 'react-native';
 import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
 import homeScreenService from "./homeScreenService";
-
 import styles from "./homeScreenStyle";
 
 class HomeScreen extends React.Component {
-
     state = {
         location: ""
     };
@@ -16,7 +14,6 @@ class HomeScreen extends React.Component {
         console.log(location)
         this.setState({location: location})
     };
-
 
     onSwipe(gestureName, navigation) {
         const {SWIPE_UP, SWIPE_DOWN, SWIPE_LEFT, SWIPE_RIGHT} = swipeDirections;
@@ -44,12 +41,8 @@ class HomeScreen extends React.Component {
     }
 
     render() {
-
         console.log(styles.homePageHeader.color)
-
-
         return(
-
             <View style={styles.container} accessible={true}>
                 <GestureRecognizer
                     onSwipe={(direction, state) => this.onSwipe(direction, this.props.navigation )}
@@ -65,14 +58,26 @@ class HomeScreen extends React.Component {
                     <View style = {styles.blackPageView}>
                         <View style = {styles.whitePageView}>
                             <Text style = {styles.subheaderText}>
-                                Welcome to the Bowdoin Art Museum App!
+                                Welcome!
                             </Text>
-                            <Text style = {styles.bodyText}>
-                                You are currently in {this.state.location}
+                        <View style = {styles.locationView}>
+                            <Text style = {styles.subheaderText}>
+                                Your Location
+                                {"\n"}
                             </Text>
-                            <Text style = {styles.bodyText}>
-                                To learn more about this exhibit swipe left
+                            <Text style = {styles.subheaderText}>
+                                Room: {this.state.location}
                             </Text>
+                            <Text style = {styles.subheaderText}>
+                                Section: _____
+
+                            </Text>
+                        </View>
+                        <TouchableOpacity style = {styles.sectionOverviewButton}>
+                            <Text style = {styles.sectionOverviewButtonText}>
+                                Section Overview
+                            </Text>
+                        </TouchableOpacity>
                         </View>
                     </View>
                 </GestureRecognizer>

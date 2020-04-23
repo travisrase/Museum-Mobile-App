@@ -12,43 +12,46 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontStyle: 'normal',
         fontWeight: 'bold',
-        fontSize: 10
+        fontSize: 35
     },
     bowdoinSeal: {
         marginTop: 20,
-        width: 70,
-        height: 70,
+        width: 130,
+        height: 130,
         alignSelf: 'center'
     },
     blackPageView: {
         backgroundColor: 'black',
         height: 400,
+        width: '90%',
         marginLeft: 5,
         marginRight: 5,
+        padding: 10,
         alignSelf: 'center',
         marginTop: 60
     },
     whitePageView: {
         backgroundColor: 'white',
-        height: 380,
-        marginLeft: 10,
-        marginRight: 10,
+        height: '100%',
+        width: '100%',
+        padding: 10,
         alignSelf: 'center',
-        marginTop: 10
+        alignItems: "center",
     },
-    subheaderText: {
-        color:GlobalVariables.commonColors.color,
-        textAlign: 'center',
-        fontStyle: 'normal',
-        fontWeight: 'bold',
-        fontSize: 25
+    locationView: {
+        padding: 10,
+        backgroundColor: GlobalVariables.greyColor,
+        alignSelf: 'center',
+        height: '50%',
+        width: '75%',
+        marginTop: 50,
+        borderWidth: 3,
+        borderColor: 'black',
+        borderRadius: 5,
     },
-    bodyText: {
-        color: 'black',
-        textAlign: 'center',
-        fontStyle: 'normal',
-        fontSize: 17
-    }
+    sectionOverviewButton: GlobalVariables.primaryButton,
+    sectionOverviewButtonText: GlobalVariables.buttonText,
+    subheaderText: GlobalVariables.header,
 
 });
 
