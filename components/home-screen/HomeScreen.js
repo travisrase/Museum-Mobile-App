@@ -1,60 +1,21 @@
-import * as WebBrowser from 'expo-web-browser';
 import * as React from 'react';
 import { Image, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
+import homeScreenService from "./homeScreenService";
+
 import styles from "./homeScreenStyle";
-
-// const styles = StyleSheet.create({
-//     homePageHeader: {
-//         color: commonColors.themeColors.colors,
-//         textAlign: 'center',
-//         fontStyle: 'normal',
-//         fontWeight: 'bold',
-//         fontSize: 30
-//     },
-//     bowdoinSeal: {
-//         marginTop: 20,
-//         width: 70,
-//         height: 70,
-//         alignSelf: 'center'
-//     },
-//     blackPageView: {
-//         backgroundColor: 'black',
-//         height: 400,
-//         marginLeft: 5,
-//         marginRight: 5,
-//         alignSelf: 'center',
-//         marginTop: 60
-//     },
-//     whitePageView: {
-//         backgroundColor: 'white',
-//         height: 380,
-//         marginLeft: 10,
-//         marginRight: 10,
-//         alignSelf: 'center',
-//         marginTop: 10
-//     },
-//     subheaderText: {
-//         color: 'black',
-//         textAlign: 'center',
-//         fontStyle: 'normal',
-//         fontWeight: 'bold',
-//         fontSize: 25
-//     },
-//     bodyText: {
-//         color: 'black',
-//         textAlign: 'center',
-//         fontStyle: 'normal',
-//         fontSize: 17
-//     }
-//
-// })
-
-
-
 
 class HomeScreen extends React.Component {
 
+    state = {
+        location: ""
+    };
+
+    componentDidMount() {
+        let location = homeScreenService.getCurrentLocation();
+        console.log(location)
+        this.setState({location: location})
+    };
 
 
     onSwipe(gestureName, navigation) {
@@ -107,7 +68,7 @@ class HomeScreen extends React.Component {
                                 Welcome to the Bowdoin Art Museum App!
                             </Text>
                             <Text style = {styles.bodyText}>
-                                You are currently in _______
+                                You are currently in {this.state.location}
                             </Text>
                             <Text style = {styles.bodyText}>
                                 To learn more about this exhibit swipe left

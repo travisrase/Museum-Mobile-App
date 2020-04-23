@@ -1,19 +1,17 @@
 'use strict'
 
-import {StyleSheet} from "react-native";
-import GlobalVariables from '../../styles/variables';
-import { Dimensions } from 'react-native';
-const widthW = Dimensions.get('window').width;
-const heightW = Dimensions.get('window').height;
+import {Dimensions, StyleSheet} from "react-native";
+import GlobalVariables from '../../styles/variables'
 
+
+let screenHeight = Dimensions.get("window").height;
+let screenWidth = Dimensions.get("window").width;
 
 
 const styles = StyleSheet.create({
-    window: {
-        width: widthW,
-        height: heightW,
-        borderWidth: 3,
-        borderColor: 'yellow'
+    container: {
+        height: screenHeight,
+        width: screenWidth
     },
     header: {
         color: GlobalVariables.commonColors.color,

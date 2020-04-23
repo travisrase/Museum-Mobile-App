@@ -3,11 +3,25 @@ import * as React from 'react';
 import { Image, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
 import styles from "./artPieceScreenStyle";
-import { Dimensions } from 'react-native';
-const width = Dimensions.get('window').width;
-const height = Dimensions.get('window').height;
+import artPieceScreenService from "./artPieceScreenService";
+
 
 class ArtPieceScreen extends React.Component {
+
+    state = {
+        title: '',
+        medium: '',
+        dimensions: ''
+    };
+
+    componentDidMount() {
+        let information = artPieceScreenService.getArtPieceInfo();
+        this.setState({
+            title: information.title,
+            medium: information.medium,
+            dimensions: information.dimensions
+        });
+    };
 
     //store piece title etc as variables
     //make this class a type of interface? not sure proper term
@@ -43,8 +57,8 @@ class ArtPieceScreen extends React.Component {
                 onSwipe={(direction, state) => this.onSwipe(direction, this.props.navigation )}
                 //onSwipeRight={(direction) => onSwipeRight(direction, navigation)}
             >
-                <View style = 
-                        {{width: Dimensions.get('window').width, height: Dimensions.get('window').height}}>
+                <View style={styles.container}>
+
                     <Text style = {styles.header}>
                         Apollo and Daphne
                     </Text>
@@ -59,13 +73,14 @@ class ArtPieceScreen extends React.Component {
                         <View style =
                                   {{position: 'relative', top: '10%'}}>
                             <Text style = {styles.bodyText}>
-                                Artist: Jacopo da Carrucci (Pontormo)
+                                Title: {this.state.title}
+
                             </Text>
                             <Text style = {styles.bodyText}>
-                                Medium: oil on canvas
+                                Medium: {this.state.medium}
                             </Text>
                             <Text style = {styles.bodyText}>
-                                Dimensions: 24 3/8 in. by 19 1/4 in.
+                                Dimensions: {this.state.dimensions}
                             </Text>
                         </View>
                     </View>
