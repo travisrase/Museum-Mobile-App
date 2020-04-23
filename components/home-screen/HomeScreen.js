@@ -1,10 +1,19 @@
-import * as WebBrowser from 'expo-web-browser';
 import * as React from 'react';
 import { Image, Platform, StyleSheet, Text, TouchableOpacity, View, Button } from 'react-native';
 import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
+import homeScreenService from "./homeScreenService";
 import styles from "./homeScreenStyle";
 
 class HomeScreen extends React.Component {
+    state = {
+        location: ""
+    };
+
+    componentDidMount() {
+        let location = homeScreenService.getCurrentLocation();
+        console.log(location)
+        this.setState({location: location})
+    };
 
     onSwipe(gestureName, navigation) {
         const {SWIPE_UP, SWIPE_DOWN, SWIPE_LEFT, SWIPE_RIGHT} = swipeDirections;
@@ -57,10 +66,11 @@ class HomeScreen extends React.Component {
                                 {"\n"}
                             </Text>
                             <Text style = {styles.subheaderText}>
-                                Room: _____
+                                Room: {this.state.location}
                             </Text>
                             <Text style = {styles.subheaderText}>
                                 Section: _____
+
                             </Text>
                         </View>
                         <TouchableOpacity style = {styles.sectionOverviewButton}>

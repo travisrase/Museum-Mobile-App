@@ -2,7 +2,6 @@ let GlobalVariables;
 import { Dimensions } from 'react-native';
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
-const isSmallDevice = width < 375;
 
 
 //how much do we care about fonts??
@@ -36,22 +35,18 @@ export default GlobalVariables = {
         backgroundGray: '#ececec',
         grayColor: '#f0f0f0',
         lightGrayBackground: '#e7e7e7',
-        contGreen: '00ff00',
-        contBlue: '00d4d4',
-        contYellow: 'f7ca18',
-        contOrange: 'ff6347',
-        contRed: 'ff0000',
-        contPurple: 'bf6ee0'
-    },
-    window: {
-        width,
-        height,
+        contGreen: '#00ff00',
+        contBlue: '#00d4d4',
+        contYellow: '#f7ca18',
+        contOrange: '#ff6347',
+        contRed: '#ff0000',
+        contPurple: '#bf6ee0'
     },
     bodyText: {
         color: 'black',
         fontSize: '18'
     },
-    //Screen Titles
+
     headerText: {
         color: '#29acdc',
         textAlign: 'center',
@@ -59,14 +54,13 @@ export default GlobalVariables = {
         fontWeight: 'bold',
         fontSize: 40
     },
-    //subheaders
+
     header: {
         color: '#29acdc',
         fontWeight: 'bold',
         fontSize: 25,
         textAlign: 'center',
     },
-    //body text
     body: {
         fontSize: 18
     }
