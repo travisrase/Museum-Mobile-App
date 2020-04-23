@@ -5,6 +5,7 @@ import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
 import styles from "./artPieceScreenStyle";
 import artPieceScreenService from "./artPieceScreenService";
 
+
 class ArtPieceScreen extends React.Component {
 
     state = {
@@ -57,17 +58,23 @@ class ArtPieceScreen extends React.Component {
                 //onSwipeRight={(direction) => onSwipeRight(direction, navigation)}
             >
                 <View style={styles.container}>
+
                     <Text style = {styles.header}>
-                        Title
+                        Apollo and Daphne
                     </Text>
                     <View style = {styles.columnLayout}>
-                        <Image style = {styles.image}
-                               source={require('../../assets/images/Apollo-and-Daphne.png')}
+                        <Image 
+                            accessibile
+                            accessibilityLabel={'Depicts: Apollo and Daphne image'}
+                            accessibilityIgnoresInvertColors
+                            style = {styles.image}
+                            source={require('../../assets/images/Apollo-and-Daphne.png')}
                         />
                         <View style =
-                                  {{position: 'relative', top: '50%'}}>
+                                  {{position: 'relative', top: '10%'}}>
                             <Text style = {styles.bodyText}>
                                 Title: {this.state.title}
+
                             </Text>
                             <Text style = {styles.bodyText}>
                                 Medium: {this.state.medium}
