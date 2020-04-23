@@ -1,10 +1,20 @@
 'use strict'
 
 import {StyleSheet} from "react-native";
-import GlobalVariables from '../../styles/variables'
+import GlobalVariables from '../../styles/variables';
+import { Dimensions } from 'react-native';
+const widthW = Dimensions.get('window').width;
+const heightW = Dimensions.get('window').height;
+
 
 
 const styles = StyleSheet.create({
+    window: {
+        width: widthW,
+        height: heightW,
+        borderWidth: 3,
+        borderColor: 'yellow'
+    },
     header: {
         color: GlobalVariables.commonColors.color,
         textAlign: 'center',
@@ -20,19 +30,23 @@ const styles = StyleSheet.create({
         fontSize: 20,
         borderWidth: 1,
         flexShrink: 1,
-        width: '50%',
+        //width: '50%',
         borderColor: GlobalVariables.commonColors.color
     },
     columnLayout: {
-        flexDirection: 'row',
-        alignItems: 'flex-start',
+        flexDirection:'column',
+        alignItems:'center',
         borderWidth: 5,
         borderColor: 'black'
     },
     image: {
-        width: '50%',
-        marginRight:10,
-        marginLeft:10,
+        flexShrink: 1,
+        width: '75%',
+        height: '65%',
+        marginTop: 0,
+        marginBottom: 0,
+        //marginRight:10,
+        //marginLeft:10,
         resizeMode:'contain',
         
         borderWidth: 1,

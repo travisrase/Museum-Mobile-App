@@ -4,6 +4,8 @@ import { Image, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react
 import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
 import styles from "./artPieceScreenStyle";
 import { Dimensions } from 'react-native';
+const width = Dimensions.get('window').width;
+const height = Dimensions.get('window').height;
 
 class ArtPieceScreen extends React.Component {
 
@@ -41,18 +43,23 @@ class ArtPieceScreen extends React.Component {
                 onSwipe={(direction, state) => this.onSwipe(direction, this.props.navigation )}
                 //onSwipeRight={(direction) => onSwipeRight(direction, navigation)}
             >
-                <View>
+                <View style = 
+                        {{width: Dimensions.get('window').width, height: Dimensions.get('window').height}}>
                     <Text style = {styles.header}>
-                        Title
+                        Apollo and Daphne
                     </Text>
                     <View style = {styles.columnLayout}>
-                        <Image style = {styles.image}
-                               source={require('../../assets/images/Apollo-and-Daphne.png')}
+                        <Image 
+                            accessibile
+                            accessibilityLabel={'Depicts: Apollo and Daphne image'}
+                            accessibilityIgnoresInvertColors
+                            style = {styles.image}
+                            source={require('../../assets/images/Apollo-and-Daphne.png')}
                         />
                         <View style =
-                                  {{position: 'relative', top: '50%'}}>
+                                  {{position: 'relative', top: '10%'}}>
                             <Text style = {styles.bodyText}>
-                                Title: Apollo and Daphne
+                                Artist: Jacopo da Carrucci (Pontormo)
                             </Text>
                             <Text style = {styles.bodyText}>
                                 Medium: oil on canvas
