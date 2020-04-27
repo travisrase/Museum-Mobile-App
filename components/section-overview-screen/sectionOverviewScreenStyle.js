@@ -2,10 +2,12 @@ import {Dimensions, StyleSheet} from "react-native";
 import GlobalVariables from '../../styles/variables'
 
 let screenHeight = Dimensions.get("window").height
+let screenWidth = Dimensions.get("window").width;
 
 const styles = StyleSheet.create({
     container: {
-        height: screenHeight
+        height: screenHeight,
+        width: screenWidth
     },
     header: {
         color: GlobalVariables.commonColors.color,
@@ -49,7 +51,19 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontStyle: 'normal',
         fontSize: 17
-    }
+    },
+    columnLayout: {
+        flexDirection:'row',
+        alignItems:'center',
+        borderWidth: 5,
+        borderColor: 'black'
+    },
+    artPieceLeftButton: GlobalVariables.titleButton,
+    artPieceLeftButtonText: GlobalVariables.buttonText,
+    subheaderText: GlobalVariables.header, 
+
+    artPieceRightButton: GlobalVariables.titleButton,
+    artPieceRightButtonText: GlobalVariables.buttonText,
 
 });
 

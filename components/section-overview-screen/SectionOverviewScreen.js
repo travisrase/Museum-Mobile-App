@@ -1,10 +1,38 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { Image, Platform, StyleSheet, Text, TouchableOpacity, View, Button } from 'react-native';
 import GestureRecognizer, { swipeDirections } from "react-native-swipe-gestures";
 import DoubleClick from "react-native-double-tap";
+import sectionOverviewScreenService from "./sectionOverviewScreenService";
 import styles from './sectionOverviewScreenStyle'
 
 class SectionOverviewScreen extends React.Component {
+
+    state = {
+        title1: '',
+        title2: '',
+        title3: '',
+        title4: '',
+        title5: '',
+        title6: '',
+    };
+
+    componentDidMount() {
+        let information1 = sectionOverviewScreenService.getTitle1();
+        let information2 = sectionOverviewScreenService.getTitle2();
+        let information3 = sectionOverviewScreenService.getTitle3();
+        let information4 = sectionOverviewScreenService.getTitle4();
+        let information5 = sectionOverviewScreenService.getTitle5();
+        let information6 = sectionOverviewScreenService.getTitle6();
+        this.setState({
+            title1: information1.title,
+            title2: information2.title,
+            title3: information3.title,
+            title4: information4.title,
+            title5: information5.title,
+            title6: information6.title,
+        });
+    };
+
     onSwipe(gestureName, navigation) {
         const { SWIPE_UP, SWIPE_DOWN, SWIPE_LEFT, SWIPE_RIGHT } = swipeDirections;
         //this.setState({gestureName: gestureName});
@@ -43,25 +71,63 @@ class SectionOverviewScreen extends React.Component {
                     <Text style = {styles.header}>
                         Section 1
                     </Text>
-                    <Text style = {styles.bodyText}>
-                        Apollo and Daphne
-                    </Text>
-                    <Text style = {styles.bodyText}>
-                        Fish Shambles
-                    </Text>
-                    <Text style = {styles.bodyText}>
-                        St. Peter Delivered from Prison by an Angel
-                    </Text>
-                    <Text style = {styles.bodyText}>
-                        Madonna of the Rosary
-                    </Text>
-                    <Text style = {styles.bodyText}>
-                        Christ Cleansing the Temple
-                    </Text>
-                    <Text style = {styles.bodyText}>
-                        Portrait of Geri della Rena
-                    </Text>
 
+                    <View style = {styles.columnLayout}>
+                        <TouchableOpacity style = {styles.artPieceLeftButton}>
+                            <DoubleClick
+                                singleTap={() => {
+                                    console.log("single tap");
+                                }}
+                                doubleTap={() => this.onDoubleTap(this.props.navigation)}
+                                delay={300}
+                            >
+                                <Text style = {styles.artPieceLeftButtonText}>
+                                    {this.state.title1} 
+                                </Text>
+                            </DoubleClick>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity style = {styles.artPieceRightButton}>
+                            {/* need to add in DOUBLE TAP layer */}
+                            <Text style = {styles.artPieceRightButtonText}>
+                                {this.state.title2} 
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
+
+                    <View style = {styles.columnLayout}>
+                        <TouchableOpacity style = {styles.artPieceLeftButton}>
+                            {/* need to add in DOUBLE TAP layer */}
+                            <Text style = {styles.artPieceLeftButtonText}>
+                                {this.state.title3} 
+                            </Text>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity style = {styles.artPieceRightButton}>
+                            {/* need to add in DOUBLE TAP layer */}
+                            <Text style = {styles.artPieceRightButtonText}>
+                                {this.state.title4} 
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
+
+                    <View style = {styles.columnLayout}>
+                        <TouchableOpacity style = {styles.artPieceLeftButton}>
+                            {/* need to add in DOUBLE TAP layer */}
+                            <Text style = {styles.artPieceLeftButtonText}>
+                                {this.state.title5} 
+                            </Text>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity style = {styles.artPieceRightButton}>
+                            {/* need to add in DOUBLE TAP layer */}
+                            <Text style = {styles.artPieceRightButtonText}>
+                                {this.state.title6} 
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
+
+                    {/*
                     <View>
                         <DoubleClick
                             singleTap={() => {
@@ -73,6 +139,7 @@ class SectionOverviewScreen extends React.Component {
                             <Text style = {styles.header}>Section Screen</Text>
                         </DoubleClick>
                     </View>
+                    */}
 
                 </View>
             </GestureRecognizer>
