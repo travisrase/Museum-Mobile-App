@@ -39,6 +39,29 @@ class SectionOverviewScreen extends React.Component {
                 onSwipe={(direction, state) => this.onSwipe(direction, this.props.navigation)}
             >
                 <View style={styles.container}>
+
+                    <Text style = {styles.header}>
+                        Section 1
+                    </Text>
+                    <Text style = {styles.bodyText}>
+                        Apollo and Daphne
+                    </Text>
+                    <Text style = {styles.bodyText}>
+                        Fish Shambles
+                    </Text>
+                    <Text style = {styles.bodyText}>
+                        St. Peter Delivered from Prison by an Angel
+                    </Text>
+                    <Text style = {styles.bodyText}>
+                        Madonna of the Rosary
+                    </Text>
+                    <Text style = {styles.bodyText}>
+                        Christ Cleansing the Temple
+                    </Text>
+                    <Text style = {styles.bodyText}>
+                        Portrait of Geri della Rena
+                    </Text>
+
                     <View>
                         <DoubleClick
                             singleTap={() => {
