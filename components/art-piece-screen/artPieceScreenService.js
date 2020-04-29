@@ -2,7 +2,7 @@ import axios from "axios";
 
 const baseUrl = 'cs2345-db-api.herokuapp.com'
 
-getArtPieceInfo = async(id) => {
+async function getArtPieceInfo (id) {
     const headers = {
         'Content-Type': 'application/json',
         "Access-Control-Allow-Origin": '*'
