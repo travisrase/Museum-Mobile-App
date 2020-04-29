@@ -47,7 +47,7 @@ class ArtPieceScreen extends React.Component {
                 //this.setState({backgroundColor: 'blue'});
                 break;
             case SWIPE_RIGHT:
-                navigation.navigate('RoomOverview')
+                navigation.navigate('SectionOverview')
                 break;
         }
     }
