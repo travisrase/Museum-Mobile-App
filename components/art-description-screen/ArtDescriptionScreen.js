@@ -2,31 +2,28 @@ import * as WebBrowser from 'expo-web-browser';
 import * as React from 'react';
 import { Image, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
-import styles from "./artPieceScreenStyle";
-import artPieceScreenService from "./artPieceScreenService";
+import styles from "./ArtDescriptionScreenStyles";
+import artDescriptionScreenService from "./ArtDescriptionScreenService";
 
 
-class ArtPieceScreen extends React.Component {
+class ArtDescriptionScreen extends React.Component {
 
     state = {
         title: '',
-        medium: '',
-        dimensions: ''
+        basic: '',
+        spatial: '',
+        thematic: ''
     };
 
     componentDidMount() {
-        let information = artPieceScreenService.getArtPieceInfo();
+        let information = artDescriptionScreenService.getArtPieceDescriptions();
         this.setState({
             title: information.title,
-            medium: information.medium,
-            dimensions: information.dimensions
+            basic: information.basic,
+            spatial: information.spatial,
+            thematic: information.thematic
         });
     };
-
-    //store piece title etc as variables
-    //make this class a type of interface? not sure proper term
-    //so that it can be replicated
-
 
     onSwipe(gestureName, navigation) {
         const {SWIPE_UP, SWIPE_DOWN, SWIPE_LEFT, SWIPE_RIGHT} = swipeDirections;
@@ -39,7 +36,6 @@ class ArtPieceScreen extends React.Component {
                 break;
             case SWIPE_DOWN:
                 console.log("DOWN")
-                navigation.navigate('ArtDescription')
                 //  this.setState({backgroundColor: 'green'});
                 break;
             case SWIPE_LEFT:
@@ -61,27 +57,19 @@ class ArtPieceScreen extends React.Component {
                 <View style={styles.container}>
 
                     <Text style = {styles.header}>
-                        Apollo and Daphne
+                        {this.state.title}
                     </Text>
                     <View style = {styles.columnLayout}>
-                        <Image 
-                            accessibile
-                            accessibilityLabel={'Depicts: Apollo and Daphne image'}
-                            accessibilityIgnoresInvertColors
-                            style = {styles.image}
-                            source={require('../../assets/images/Apollo-and-Daphne.png')}
-                        />
-                        <View style =
-                                  {{position: 'relative', top: '10%'}}>
+                        <View>
                             <Text style = {styles.bodyText}>
-                                Title: {this.state.title}
+                                Basic Description: {this.state.basic}
 
                             </Text>
                             <Text style = {styles.bodyText}>
-                                Medium: {this.state.medium}
+                                Spatial Description: {this.state.spatial}
                             </Text>
                             <Text style = {styles.bodyText}>
-                                Dimensions: {this.state.dimensions}
+                                Thematic Description: {this.state.thematic}
                             </Text>
                         </View>
                     </View>
@@ -91,4 +79,4 @@ class ArtPieceScreen extends React.Component {
     }
 }
 
-export default ArtPieceScreen;
+export default ArtDescriptionScreen;
