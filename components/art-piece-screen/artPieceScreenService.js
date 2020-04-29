@@ -7,7 +7,7 @@ getArtPieceInfo = async(id) => {
         'Content-Type': 'application/json',
         "Access-Control-Allow-Origin": '*'
     };
-    if (id == null){
+    if (id === null){
         return axios({
             method: 'get',
             url: baseUrl + '/art_object/all',
