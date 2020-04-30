@@ -39,6 +39,7 @@ class SectionOverviewScreen extends React.Component {
         switch (gestureName) {
             case SWIPE_UP:
                 console.log("UP")
+                navigation.navigate('Home')
                 // this.setState({backgroundColor: 'red'});
                 break;
             case SWIPE_DOWN:
@@ -81,7 +82,7 @@ class SectionOverviewScreen extends React.Component {
                                 doubleTap={() => this.onDoubleTap(this.props.navigation)}
                                 delay={300}
                             >
-                                <Text style = {styles.artPieceTitleButtonText}>
+                                <Text style = {styles.buttonText}>
                                     {this.state.title1} 
                                 </Text>
                             </DoubleClick>
@@ -89,7 +90,7 @@ class SectionOverviewScreen extends React.Component {
 
                         <TouchableOpacity style = {styles.artPieceTitleButton}>
                             {/* need to add in DOUBLE TAP layer */}
-                            <Text style = {styles.artPieceTitleButtonText}>
+                            <Text style = {styles.buttonText}>
                                 {this.state.title2} 
                             </Text>
                         </TouchableOpacity>
@@ -98,14 +99,14 @@ class SectionOverviewScreen extends React.Component {
                     <View style = {styles.columnLayout}>
                         <TouchableOpacity style = {styles.artPieceTitleButton}>
                             {/* need to add in DOUBLE TAP layer */}
-                            <Text style = {styles.artPieceTitleButtonText}>
+                            <Text style = {styles.buttonText}>
                                 {this.state.title3} 
                             </Text>
                         </TouchableOpacity>
 
                         <TouchableOpacity style = {styles.artPieceTitleButton}>
                             {/* need to add in DOUBLE TAP layer */}
-                            <Text style = {styles.artPieceTitleButtonText}>
+                            <Text style = {styles.buttonText}>
                                 {this.state.title4} 
                             </Text>
                         </TouchableOpacity>
@@ -114,14 +115,14 @@ class SectionOverviewScreen extends React.Component {
                     <View style = {styles.columnLayout}>
                         <TouchableOpacity style = {styles.artPieceTitleButton}>
                             {/* need to add in DOUBLE TAP layer */}
-                            <Text style = {styles.artPieceTitleButtonText}>
+                            <Text style = {styles.buttonText}>
                                 {this.state.title5} 
                             </Text>
                         </TouchableOpacity>
 
                         <TouchableOpacity style = {styles.artPieceTitleButton}>
                             {/* need to add in DOUBLE TAP layer */}
-                            <Text style = {styles.artPieceTitleButtonText}>
+                            <Text style = {styles.buttonText}>
                                 {this.state.title6} 
                             </Text>
                         </TouchableOpacity>

@@ -52,6 +52,11 @@ const styles = StyleSheet.create({
         fontStyle: 'normal',
         fontSize: 17
     },
+    buttonText: {
+        color: '#29acdc',
+        fontSize: 30,
+        fontWeight: 'bold',
+    },
     columnLayout: {
         flexDirection:'row',
         alignItems:'center',
