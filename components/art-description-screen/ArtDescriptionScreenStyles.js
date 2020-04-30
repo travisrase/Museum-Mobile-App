@@ -21,17 +21,11 @@ const styles = StyleSheet.create({
         fontSize: 40,
         marginTop: 20
     },
-    bodyText: {
-        marginLeft: 5,
-        marginRight: 5,
-        textAlign: 'left',
+    buttonLabels: {
+        textAlign: 'center',
         fontStyle: 'normal',
         fontWeight: 'bold',
-        fontSize: 20,
-        borderWidth: 1,
-        flexShrink: 1,
-        //width: '50%',
-        borderColor: GlobalVariables.commonColors.color
+        fontSize: 32,
     },
     columnLayout: {
         flexDirection:'column',
@@ -51,7 +45,13 @@ const styles = StyleSheet.create({
         
         borderWidth: 1,
         borderColor: GlobalVariables.commonColors.color
-    }
+    },
+    artPieceLeftButton: GlobalVariables.titleButton,
+    artPieceLeftButtonText: GlobalVariables.buttonText,
+    subheaderText: GlobalVariables.header, 
+
+    artPieceRightButton: GlobalVariables.titleButton,
+    artPieceRightButtonText: GlobalVariables.buttonText,
 });
 
 export default styles;
