@@ -39,6 +39,7 @@ class SectionOverviewScreen extends React.Component {
         switch (gestureName) {
             case SWIPE_UP:
                 console.log("UP")
+                navigation.navigate('Home')
                 // this.setState({backgroundColor: 'red'});
                 break;
             case SWIPE_DOWN:
@@ -73,7 +74,7 @@ class SectionOverviewScreen extends React.Component {
                     </Text>
 
                     <View style = {styles.columnLayout}>
-                        <TouchableOpacity style = {styles.artPieceLeftButton}>
+                        <TouchableOpacity style = {styles.artPieceTitleButton}>
                             <DoubleClick
                                 singleTap={() => {
                                     console.log("single tap");
@@ -81,47 +82,47 @@ class SectionOverviewScreen extends React.Component {
                                 doubleTap={() => this.onDoubleTap(this.props.navigation)}
                                 delay={300}
                             >
-                                <Text style = {styles.artPieceLeftButtonText}>
+                                <Text style = {styles.buttonText}>
                                     {this.state.title1} 
                                 </Text>
                             </DoubleClick>
                         </TouchableOpacity>
 
-                        <TouchableOpacity style = {styles.artPieceRightButton}>
+                        <TouchableOpacity style = {styles.artPieceTitleButton}>
                             {/* need to add in DOUBLE TAP layer */}
-                            <Text style = {styles.artPieceRightButtonText}>
+                            <Text style = {styles.buttonText}>
                                 {this.state.title2} 
                             </Text>
                         </TouchableOpacity>
                     </View>
 
                     <View style = {styles.columnLayout}>
-                        <TouchableOpacity style = {styles.artPieceLeftButton}>
+                        <TouchableOpacity style = {styles.artPieceTitleButton}>
                             {/* need to add in DOUBLE TAP layer */}
-                            <Text style = {styles.artPieceLeftButtonText}>
+                            <Text style = {styles.buttonText}>
                                 {this.state.title3} 
                             </Text>
                         </TouchableOpacity>
 
-                        <TouchableOpacity style = {styles.artPieceRightButton}>
+                        <TouchableOpacity style = {styles.artPieceTitleButton}>
                             {/* need to add in DOUBLE TAP layer */}
-                            <Text style = {styles.artPieceRightButtonText}>
+                            <Text style = {styles.buttonText}>
                                 {this.state.title4} 
                             </Text>
                         </TouchableOpacity>
                     </View>
 
                     <View style = {styles.columnLayout}>
-                        <TouchableOpacity style = {styles.artPieceLeftButton}>
+                        <TouchableOpacity style = {styles.artPieceTitleButton}>
                             {/* need to add in DOUBLE TAP layer */}
-                            <Text style = {styles.artPieceLeftButtonText}>
+                            <Text style = {styles.buttonText}>
                                 {this.state.title5} 
                             </Text>
                         </TouchableOpacity>
 
-                        <TouchableOpacity style = {styles.artPieceRightButton}>
+                        <TouchableOpacity style = {styles.artPieceTitleButton}>
                             {/* need to add in DOUBLE TAP layer */}
-                            <Text style = {styles.artPieceRightButtonText}>
+                            <Text style = {styles.buttonText}>
                                 {this.state.title6} 
                             </Text>
                         </TouchableOpacity>

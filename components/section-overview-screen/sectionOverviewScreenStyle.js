@@ -52,19 +52,21 @@ const styles = StyleSheet.create({
         fontStyle: 'normal',
         fontSize: 17
     },
+    buttonText: {
+        color: '#29acdc',
+        textAlign: 'center',
+        fontWeight: 'bold',
+        fontSize: 30,
+    },
     columnLayout: {
         flexDirection:'row',
         alignItems:'center',
         borderWidth: 5,
         borderColor: 'black'
     },
-    artPieceLeftButton: GlobalVariables.titleButton,
-    artPieceLeftButtonText: GlobalVariables.buttonText,
+    artPieceTitleButton: GlobalVariables.titleButton,
+    artPieceTitleButtonText: GlobalVariables.buttonText,
     subheaderText: GlobalVariables.header, 
-
-    artPieceRightButton: GlobalVariables.titleButton,
-    artPieceRightButtonText: GlobalVariables.buttonText,
-
 });
 
 
