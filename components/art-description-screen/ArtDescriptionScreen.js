@@ -2,7 +2,11 @@ import * as WebBrowser from 'expo-web-browser';
 import * as React from 'react';
 import { Image, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
+import DoubleClick from "react-native-double-tap";
 import styles from "./ArtDescriptionScreenStyles";
+//import Tts from 'react-native-tts';
+import * as Speech from 'expo-speech'
+import GlobalVariables from '../../styles/variables';
 import artDescriptionScreenService from "./ArtDescriptionScreenService";
 
 
@@ -60,23 +64,55 @@ class ArtDescriptionScreen extends React.Component {
                         {this.state.title}
                     </Text>
                     <View style = {styles.columnLayout}>
-                        <View>
-                            <Text style = {styles.bodyText}>
-                                Basic Description: {this.state.basic}
+                        <TouchableOpacity style = {styles.artPieceRightButton}>
+                        <DoubleClick
+                                singleTap={() => {
+                                    console.log("single tap");
+                                }}
+                                doubleTap={() => {Speech.speak(this.state.basic)}}
+                                delay={300}
+                            >
+                                
+                            <Text style = {styles.buttonLabels}>
+                                Basic Description
+                            </Text>
+                            
+                            </DoubleClick>
+                        </TouchableOpacity>
 
+                        <TouchableOpacity style = {styles.artPieceRightButton}>
+                        <DoubleClick
+                                singleTap={() => {
+                                    console.log("single tap");
+                                }}
+                                doubleTap={() => {Speech.speak(this.state.spatial);}
+                                }
+                                delay={300}
+                            >
+                            <Text style = {styles.buttonLabels}>
+                                Spatial Description
                             </Text>
-                            <Text style = {styles.bodyText}>
-                                Spatial Description: {this.state.spatial}
+                            </DoubleClick>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity style = {styles.artPieceRightButton}>
+                        <DoubleClick
+                                singleTap={() => {
+                                    console.log("single tap");
+                                }}
+                                doubleTap={() => {Speech.speak(this.state.thematic);}
+                                }
+                                delay={300}
+                            >
+                            <Text style = {styles.buttonLabels}>
+                                Thematic Description
                             </Text>
-                            <Text style = {styles.bodyText}>
-                                Thematic Description: {this.state.thematic}
-                            </Text>
-                        </View>
-                    </View>
+                        </DoubleClick>
+                        </TouchableOpacity>
+                </View>
                 </View>
             </GestureRecognizer>
         )
     }
 }
-
 export default ArtDescriptionScreen;
