@@ -5,6 +5,8 @@ import DoubleClick from "react-native-double-tap";
 import sectionOverviewScreenService from "./sectionOverviewScreenService";
 import GlobalVariables from '../../styles/variables';
 import styles from './sectionOverviewScreenStyle'
+import {connect} from 'react-redux';
+import {setArtPiece} from '../art-piece-screen/artPieceScreenActions';
 
 class SectionOverviewScreen extends React.Component {
 
@@ -58,7 +60,9 @@ class SectionOverviewScreen extends React.Component {
                 break;
         }
     }
-    onDoubleTap(navigation){
+    onDoubleTap(navigation, title, id){
+        //Call Redux function
+        this.props.setArtPiece(title,id)
         navigation.navigate('ArtPiece')
     }
 
@@ -83,7 +87,7 @@ class SectionOverviewScreen extends React.Component {
                                 singleTap={() => {
                                     console.log("single tap");
                                 }}
-                                doubleTap={() => this.onDoubleTap(this.props.navigation)}
+                                doubleTap={() => this.onDoubleTap(this.props.navigation, this.state.title1, 1)}
                                 delay={300}
                             >
                                 <Text style = {styles.buttonText}>
@@ -152,4 +156,5 @@ class SectionOverviewScreen extends React.Component {
     }
 }
 
-export default SectionOverviewScreen;
+//You have to connect the component to the Redux Store.
+export default connect(null, {setArtPiece})(SectionOverviewScreen);
