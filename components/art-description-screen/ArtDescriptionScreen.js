@@ -47,7 +47,7 @@ class ArtDescriptionScreen extends React.Component {
                 //this.setState({backgroundColor: 'blue'});
                 break;
             case SWIPE_RIGHT:
-                navigation.navigate('RoomOverview')
+                navigation.navigate('ArtPiece')
                 break;
         }
     }
@@ -67,7 +67,7 @@ class ArtDescriptionScreen extends React.Component {
                         {this.state.title}
                     </Text>
                     <View style = {styles.columnLayout}>
-                        <TouchableOpacity style = {styles.artPieceRightButton}>
+                        <TouchableOpacity style = {styles.descriptionButton}>
                         <DoubleClick
                                 singleTap={() => {
                                     console.log("single tap");
@@ -82,8 +82,10 @@ class ArtDescriptionScreen extends React.Component {
                             
                             </DoubleClick>
                         </TouchableOpacity>
+                    </View>
 
-                        <TouchableOpacity style = {styles.artPieceRightButton}>
+                    <View style = {styles.columnLayout}>
+                        <TouchableOpacity style = {styles.descriptionButton}>
                         <DoubleClick
                                 singleTap={() => {
                                     console.log("single tap");
@@ -97,8 +99,10 @@ class ArtDescriptionScreen extends React.Component {
                             </Text>
                             </DoubleClick>
                         </TouchableOpacity>
+                    </View>
 
-                        <TouchableOpacity style = {styles.artPieceRightButton}>
+                    <View style = {styles.columnLayout}>
+                        <TouchableOpacity style = {styles.descriptionButton}>
                         <DoubleClick
                                 singleTap={() => {
                                     console.log("single tap");
@@ -112,7 +116,7 @@ class ArtDescriptionScreen extends React.Component {
                             </Text>
                         </DoubleClick>
                         </TouchableOpacity>
-                </View>
+                    </View>
                 </View>
             </GestureRecognizer>
         )
