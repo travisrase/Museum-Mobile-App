@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Image, Platform, StyleSheet, Text, TouchableOpacity, View, Button } from 'react-native';
 import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
 import homeScreenService from "./homeScreenService";
+import GlobalVariables from '../../styles/variables';
 import styles from "./homeScreenStyle";
 
 class HomeScreen extends React.Component {
@@ -55,11 +56,17 @@ class HomeScreen extends React.Component {
                         style={styles.bowdoinSeal}
                         source={require('../../assets/images/Bowdoin_Seal.png')}
                     />
+                    <Text style = {GlobalVariables.navigationLabels}>
+                        Swipe Left for Overview of Room
+                    </Text>
+
                     <View style = {styles.blackPageView}>
+
                         <View style = {styles.whitePageView}>
                             <Text style = {styles.subheaderText}>
                                 Welcome!
                             </Text>
+
                         <View style = {styles.locationView}>
                             <Text style = {styles.subheaderText}>
                                 Your Location

@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
         fontStyle: 'normal',
         fontWeight: 'bold',
         fontSize: 40,
-        marginTop: 20
+        marginTop: 10
     },
     bowdoinSeal: {
         marginTop: 20,

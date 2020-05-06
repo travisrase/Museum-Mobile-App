@@ -3,6 +3,7 @@ import * as React from 'react';
 import { Image, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
 import styles from "./artPieceScreenStyle";
+import GlobalVariables from '../../styles/variables';
 import artPieceScreenService from "./artPieceScreenService";
 
 
@@ -59,6 +60,9 @@ class ArtPieceScreen extends React.Component {
                 //onSwipeRight={(direction) => onSwipeRight(direction, navigation)}
             >
                 <View style={styles.container}>
+                    <Text style = {GlobalVariables.navigationLabels}>
+                        Swipe Up To Return Home
+                    </Text>
 
                     <Text style = {styles.header}>
                         Apollo and Daphne
@@ -72,10 +76,9 @@ class ArtPieceScreen extends React.Component {
                             source={require('../../assets/images/Apollo-and-Daphne.png')}
                         />
                         <View style =
-                                  {{position: 'relative', top: '10%'}}>
+                                  {{position: 'relative', top: '5%'}}>
                             <Text style = {styles.bodyText}>
                                 Title: {this.state.title}
-
                             </Text>
                             <Text style = {styles.bodyText}>
                                 Medium: {this.state.medium}
@@ -85,6 +88,9 @@ class ArtPieceScreen extends React.Component {
                             </Text>
                         </View>
                     </View>
+                    <Text style = {GlobalVariables.navigationLabels}>
+                        Swipe Down To Access Descriptions
+                    </Text>
                 </View>
             </GestureRecognizer>
         )
