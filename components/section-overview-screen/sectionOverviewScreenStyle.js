@@ -62,11 +62,12 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         alignItems:'center',
         borderWidth: 5,
-        borderColor: 'black'
+        borderColor: 'black',
+        height: '25%'
     },
     artPieceTitleButton: GlobalVariables.titleButton,
     artPieceTitleButtonText: GlobalVariables.buttonText,
-    subheaderText: GlobalVariables.header, 
+    subheaderText: GlobalVariables.header,
 });
 
 

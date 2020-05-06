@@ -38,7 +38,8 @@ const styles = StyleSheet.create({
         flexDirection:'column',
         alignItems:'center',
         borderWidth: 5,
-        borderColor: 'black'
+        borderColor: 'black',
+        height: '25%'
     },
     image: {
         flexShrink: 1,
@@ -53,12 +54,11 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: GlobalVariables.commonColors.color
     },
-    artPieceLeftButton: GlobalVariables.titleButton,
-    artPieceLeftButtonText: GlobalVariables.buttonText,
+
+    descriptionButton: GlobalVariables.descriptionButton,
+    descriptionButtonText: GlobalVariables.buttonText,
     subheaderText: GlobalVariables.header, 
 
-    artPieceRightButton: GlobalVariables.titleButton,
-    artPieceRightButtonText: GlobalVariables.buttonText,
 });
 
 export default styles;
