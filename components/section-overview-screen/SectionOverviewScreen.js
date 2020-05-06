@@ -3,6 +3,7 @@ import { Image, Platform, StyleSheet, Text, TouchableOpacity, View, Button } fro
 import GestureRecognizer, { swipeDirections } from "react-native-swipe-gestures";
 import DoubleClick from "react-native-double-tap";
 import sectionOverviewScreenService from "./sectionOverviewScreenService";
+import GlobalVariables from '../../styles/variables';
 import styles from './sectionOverviewScreenStyle'
 
 class SectionOverviewScreen extends React.Component {
@@ -68,6 +69,9 @@ class SectionOverviewScreen extends React.Component {
                 onSwipe={(direction, state) => this.onSwipe(direction, this.props.navigation)}
             >
                 <View style={styles.container}>
+                    <Text style = {GlobalVariables.navigationLabels}>
+                        Swipe Up To Return Home
+                    </Text>
 
                     <Text style = {styles.header}>
                         Section 1

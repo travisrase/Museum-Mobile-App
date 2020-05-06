@@ -57,7 +57,7 @@ export default GlobalVariables = {
     },
     bodyText: {
         color: 'black',
-        fontSize: '18'
+        fontSize: 18
     },
 
     headerText: {
@@ -76,6 +76,11 @@ export default GlobalVariables = {
     },
     body: {
         fontSize: 18
+    },
+    navigationLabels: {
+        textAlign: 'center',
+        fontSize: 20,
+        marginTop:5,
     }
 };
 

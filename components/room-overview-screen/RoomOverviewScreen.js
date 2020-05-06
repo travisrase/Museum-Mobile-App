@@ -3,6 +3,7 @@ import { View, Text } from 'react-native';
 import GestureRecognizer, { swipeDirections } from "react-native-swipe-gestures";
 import DoubleClick from "react-native-double-tap";
 import { useNavigation } from '@react-navigation/native';
+import GlobalVariables from '../../styles/variables';
 import styles from './roomOverviewScreenStyle'
 
 
@@ -39,6 +40,9 @@ class RoomOverviewScreen extends React.Component {
                 onSwipe={(direction, state) => this.onSwipe(direction, this.props.navigation)}
             >
                 <View style={styles.container}>
+                    <Text style = {GlobalVariables.navigationLabels}>
+                        Swipe Up To Return Home
+                    </Text>
 
                     <View>
                         <DoubleClick

@@ -9,6 +9,13 @@ let screenWidth = Dimensions.get("window").width;
 
 
 const styles = StyleSheet.create({
+    navigationLabels: {
+        textAlign: 'center',
+        fontSize: 20,
+        marginTop:5,
+        marginBottom: 5
+
+    },
     container: {
         height: screenHeight,
         width: screenWidth
@@ -19,7 +26,7 @@ const styles = StyleSheet.create({
         fontStyle: 'normal',
         fontWeight: 'bold',
         fontSize: 40,
-        marginTop: 20
+        marginTop: 10
     },
     buttonLabels: {
         textAlign: 'center',

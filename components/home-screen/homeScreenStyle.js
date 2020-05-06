@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
         marginRight: 5,
         padding: 10,
         alignSelf: 'center',
-        marginTop: 60
+        marginTop: 10
     },
     whitePageView: {
         backgroundColor: 'white',
