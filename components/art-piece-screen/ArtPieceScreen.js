@@ -17,6 +17,7 @@ class ArtPieceScreen extends React.Component {
 
     componentDidMount() {
         let information = artPieceScreenService.getArtPieceInfo();
+        console.log(information)
         this.setState({
             title: information.title,
             medium: information.medium,

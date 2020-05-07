@@ -3,10 +3,8 @@ import axios from "axios";
 const baseUrl = 'https://cs2345-db-api.herokuapp.com'
 
 async function getArtPieceInfo (id) {
-    console.log("id: ", id)
     const headers = {
         'Content-Type': 'application/json',
-        "Access-Control-Allow-Origin": '*'
     };
     if (id === null || id === undefined){
         return axios({
@@ -58,7 +56,6 @@ async function getArtPieceInfo (id) {
                 dimensions: 'None'
             }
         })
-
     }
 };
 
