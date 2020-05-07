@@ -1,13 +1,14 @@
 import axios from "axios";
 
-const baseUrl = 'cs2345-db-api.herokuapp.com'
+const baseUrl = 'https://cs2345-db-api.herokuapp.com'
 
 async function getArtPieceInfo (id) {
+    console.log("id: ", id)
     const headers = {
         'Content-Type': 'application/json',
         "Access-Control-Allow-Origin": '*'
     };
-    if (id === null){
+    if (id === null || id === undefined){
         return axios({
             method: 'get',
             url: baseUrl + '/art_object/all',
