@@ -3,6 +3,8 @@ import { Image, Platform, StyleSheet, Text, TouchableOpacity, View, Button } fro
 import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
 import homeScreenService from "./homeScreenService";
 import GlobalVariables from '../../styles/variables';
+import { getAllArtPieces} from "../art-piece-screen/artPieceScreenActions";
+import {connect} from 'react-redux';
 import styles from "./homeScreenStyle";
 
 class HomeScreen extends React.Component {
@@ -11,6 +13,7 @@ class HomeScreen extends React.Component {
     };
 
     componentDidMount() {
+        this.props.getAllArtPieces();
         let location = homeScreenService.getCurrentLocation();
         console.log(location)
         this.setState({location: location})
@@ -93,4 +96,4 @@ class HomeScreen extends React.Component {
     }
 }
 
-export default HomeScreen;
+export default connect(null, {getAllArtPieces})(HomeScreen);

@@ -4,8 +4,9 @@ import { Image, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react
 import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
 import styles from "./artPieceScreenStyle";
 import GlobalVariables from '../../styles/variables';
-import artPieceScreenService from "./artPieceScreenService";
-
+import {resetArtPiece} from './artPieceScreenActions';
+import { connect } from 'react-redux';
+import artPieceScreenService from './artPieceScreenService';
 
 class ArtPieceScreen extends React.Component {
 
@@ -16,8 +17,10 @@ class ArtPieceScreen extends React.Component {
     };
 
     componentDidMount() {
-        let information = artPieceScreenService.getArtPieceInfo();
-        console.log(information)
+        //Calling on the Redux Store
+        let artPieceId = this.props.id;
+        console.log(artPieceId)
+        let information = artPieceScreenService.getArtPieceInfo(artPieceId);
         this.setState({
             title: information.title,
             medium: information.medium,
@@ -35,7 +38,8 @@ class ArtPieceScreen extends React.Component {
         //this.setState({gestureName: gestureName});
         switch (gestureName) {
             case SWIPE_UP:
-                console.log("UP")
+                //Calling function from redux to reset the art piece data
+                this.props.resetArtPiece();
                 navigation.navigate('Home')
                 // this.setState({backgroundColor: 'red'});
                 break;
@@ -97,5 +101,11 @@ class ArtPieceScreen extends React.Component {
         )
     }
 }
+//Get props from redux state 
+const mapStateToProps = state => ({
+    title: state.artPieceData.title,
+    id: state.artPieceData.id
 
-export default ArtPieceScreen;
+});
+//Connect both state (props) and function (dispatches) to Component; 
+    export default connect(mapStateToProps, {resetArtPiece})(ArtPieceScreen);

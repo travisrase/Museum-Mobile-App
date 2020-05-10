@@ -15,7 +15,7 @@ async function getArtPieceInfo (id) {
         .then((response) => {
             return {
                 'status': 'success',
-                'body' : response.body
+                'body' : response.data.art_objects
             }
         })
         .catch((error) => {

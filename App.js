@@ -3,7 +3,11 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
-
+import allReducers from './store/Store';
+import {createStore, compose, applyMiddleware} from 'redux';
+import {Provider} from 'react-redux';
+import thunk from "redux-thunk";
+import logger from "redux-logger";
 import RoomOverviewScreen from "./screens/RoomOverviewScreen";
 import HomeScreen from "./screens/HomeScreen";
 import SectionOverviewScreen from "./screens/SectionOverviewScreen";
@@ -11,9 +15,16 @@ import ArtPieceScreen from "./screens/ArtPieceScreen";
 import ArtDescriptionScreen from "./screens/ArtDescriptionScreen"
 const Stack = createStackNavigator();
 
+const middleware = [thunk, logger];
+
+const store = createStore(allReducers,
+  compose(applyMiddleware(...middleware))
+  );
+
 
 function App() {
     return (
+      <Provider store={store}>
         <NavigationContainer>
             <Stack.Navigator>
                 <Stack.Screen name="Home" component={HomeScreen} />
@@ -23,7 +34,7 @@ function App() {
                 <Stack.Screen name="ArtDescription" component={ArtDescriptionScreen}/>
             </Stack.Navigator>
         </NavigationContainer>
-
+      </Provider>
     );
 }
 //
