@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
         flexDirection:'column',
         alignItems:'center',
         borderWidth: 5,
+        height: '70%'
         //borderColor: 'black'
     },
     image: {

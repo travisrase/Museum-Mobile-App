@@ -1,3 +1,18 @@
+import artPieceScreenService from "./artPieceScreenService";
+
+export const getAllArtPieces = () => async dispatch => {
+    const response = await artPieceScreenService.getArtPieceInfo(null);
+    if(response.status === 'success') {
+        dispatch({
+            type: 'GET_ALL_ART_OBJECTS',
+            payload: response.body
+        });
+    } else {
+        dispatch({
+            type: "GET_ALL_ART_OBJECTS_FAIL"
+        })
+    }
+}
 
 export const setArtPiece = (title, id) => dispatch =>{
     var artPieceObject = {}

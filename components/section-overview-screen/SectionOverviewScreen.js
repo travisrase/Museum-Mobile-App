@@ -72,7 +72,7 @@ class SectionOverviewScreen extends React.Component {
             <GestureRecognizer
                 onSwipe={(direction, state) => this.onSwipe(direction, this.props.navigation)}
             >
-                <View style={styles.container}>
+                <View style={styles.container}>                 
                     <Text style = {GlobalVariables.navigationLabels}>
                         Swipe Up To Return Home
                     </Text>
@@ -103,7 +103,7 @@ class SectionOverviewScreen extends React.Component {
                             </Text>
                         </TouchableOpacity>
                     </View>
-
+                    
                     <View style = {styles.columnLayout}>
                         <TouchableOpacity style = {styles.artPieceTitleButton}>
                             {/* need to add in DOUBLE TAP layer */}
@@ -135,7 +135,7 @@ class SectionOverviewScreen extends React.Component {
                             </Text>
                         </TouchableOpacity>
                     </View>
-
+                    
                     {/*
                     <View>
                         <DoubleClick

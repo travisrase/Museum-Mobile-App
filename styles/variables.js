@@ -27,7 +27,7 @@ export default GlobalVariables = {
         borderRadius: 10,
     },
     titleButton: {
-        height: (height-200)/3,         // this height is hardcoded in, it just correspond with number of pieces in the section
+        height: '98%',
         width: '49%',
         backgroundColor: 'white',
         justifyContent: 'center',
@@ -36,7 +36,22 @@ export default GlobalVariables = {
         alignItems: 'center',
         marginLeft: 1,
         marginRight: 1,
-        marginTop: 2,
+        marginTop: 1,
+        marginBottom: 1,
+        borderRadius: 10,
+    },
+    descriptionButton: {
+        height: '98%',
+        width: '98%',
+        backgroundColor: 'white',
+        justifyContent: 'center',
+        borderColor: '#29acdc',
+        borderWidth: 10,
+        alignItems: 'center',
+        marginLeft: 1,
+        marginRight: 1,
+        marginTop: 1,
+        marginBottom: 1,
         borderRadius: 10,
     },
     buttonText: {
