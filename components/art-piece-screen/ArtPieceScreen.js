@@ -6,7 +6,9 @@ import GlobalVariables from '../../styles/variables';
 import {resetArtPiece} from './artPieceScreenActions';
 import { connect } from 'react-redux';
 import artPieceScreenService from './artPieceScreenService';
-import { Container, Header, Content, Card, CardItem, Text, Body } from 'native-base';
+import { Image, View, StyleSheet} from 'react-native';
+import { Dimensions } from 'react-native';
+import {  Card, CardItem, Text, } from 'native-base';
 
 class ArtPieceScreen extends React.Component {
 
@@ -14,18 +16,24 @@ class ArtPieceScreen extends React.Component {
         title: '',
         medium: '',
         dimensions: '',
-        description: '',
-        imageUrl: ''
+        descriptionBasic: '',
+        descriptionSpatial: '',
+        descriptionThematic: '',
+        imageUrl: '',
+        countryOrigin: ''
     };
 
-    componentDidMount = async () => {
+    componentDidMount =  async () => {
         //Calling on the Redux Store
         let artPieceId = this.props.id;
         let artPiece = await artPieceScreenService.getArtPieceInfo(artPieceId);
-        console.log(artPiece)
         this.setState({
-            title: artPiece.title,
-            imageUrl: artPiece.image_url
+            title: artPiece.body.title,
+            imageUrl: artPiece.body.image_url,
+            descriptionBasic: artPiece.body.description_basic,
+            descriptionThematic: artPiece.body.description_thematic,
+            descriptionSpatial: artPiece.body.description_spatial,
+            countryOrigin: artPiece.body.country_origin
         });
     };
 
@@ -60,35 +68,36 @@ class ArtPieceScreen extends React.Component {
     }
 
     render(){
-        // const windowWidth = Dimensions.get('window').width;
-        // const windowHeight = Dimensions.get('window').height;
-        console.lo
-        return(
-            <GestureRecognizer
-                onSwipe={(direction, state) => this.onSwipe(direction, this.props.navigation )}
-                //onSwipeRight={(direction) => onSwipeRight(direction, navigation)}
-            >
-                <Container>
-                    <Header/>
-                    <Content>
+        const windowWidth = Dimensions.get('window').width;
+        const windowHeight = Dimensions.get('window').height;
+        let imageHieght = windowHeight/2
+        if(this.state.imageUrl === ''){
+            return (<View></View>)
+        } else {
+            return(
+                <GestureRecognizer
+                    onSwipe={(direction, state) => this.onSwipe(direction, this.props.navigation )}
+                    //onSwipeRight={(direction) => onSwipeRight(direction, navigation)}
+                >
+                    <View>
                         <Card>
                             <CardItem header border>
                                 <Text> Title: {this.state.title}</Text>
                             </CardItem>
                             <CardItem>
-                                <Body>
-                                    <Image source={this.state.imageUrl} style={{height: 200, width: 200, flex: 1}}/>
-                                </Body>
+                                <Image source={{uri: this.state.imageUrl}} style={{height: imageHieght, width: windowWidth, flex: 1}}/>
+                            </CardItem>
+                            <CardItem>
+                                <Text> Country of Origin: {this.state.countryOrigin}</Text>
                             </CardItem>
                         </Card>
-                    </Content>
-                </Container>
-
+                    </View>
                     <Text style = {GlobalVariables.navigationLabels}>
                         Swipe Down To Access Descriptions
                     </Text>
-            </GestureRecognizer>
-        )
+                </GestureRecognizer>
+            )
+        }
     }
 }
 
