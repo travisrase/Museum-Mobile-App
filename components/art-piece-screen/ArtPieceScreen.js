@@ -19,7 +19,6 @@ class ArtPieceScreen extends React.Component {
     componentDidMount() {
         //Calling on the Redux Store
         let artPieceId = this.props.id;
-        console.log(artPieceId)
         let information = artPieceScreenService.getArtPieceInfo(artPieceId);
         this.setState({
             title: information.title,

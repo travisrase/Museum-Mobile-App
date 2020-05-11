@@ -11,29 +11,12 @@ import {setArtPiece} from '../art-piece-screen/artPieceScreenActions';
 class SectionOverviewScreen extends React.Component {
 
     state = {
-        title1: '',
-        title2: '',
-        title3: '',
-        title4: '',
-        title5: '',
-        title6: '',
+        zone: null
     };
 
     componentDidMount() {
-        let information1 = sectionOverviewScreenService.getTitle1();
-        let information2 = sectionOverviewScreenService.getTitle2();
-        let information3 = sectionOverviewScreenService.getTitle3();
-        let information4 = sectionOverviewScreenService.getTitle4();
-        let information5 = sectionOverviewScreenService.getTitle5();
-        let information6 = sectionOverviewScreenService.getTitle6();
-        this.setState({
-            title1: information1.title,
-            title2: information2.title,
-            title3: information3.title,
-            title4: information4.title,
-            title5: information5.title,
-            title6: information6.title,
-        });
+        this.setState({zone: this.props.zone})
+        console.log()
     };
 
     onSwipe(gestureName, navigation) {
@@ -41,21 +24,14 @@ class SectionOverviewScreen extends React.Component {
         //this.setState({gestureName: gestureName});
         switch (gestureName) {
             case SWIPE_UP:
-                console.log("UP")
                 navigation.navigate('Home')
-                // this.setState({backgroundColor: 'red'});
                 break;
             case SWIPE_DOWN:
-                console.log("DOWN")
-                //  this.setState({backgroundColor: 'green'});
                 break;
             case SWIPE_LEFT:
-                console.log("LEFT")
                 navigation.navigate('ArtPiece')
-                //  this.setState({backgroundColor: 'blue'});
                 break;
             case SWIPE_RIGHT:
-                console.log("RIGHT")
                 navigation.navigate('RoomOverview')
                 break;
         }
@@ -65,7 +41,6 @@ class SectionOverviewScreen extends React.Component {
         this.props.setArtPiece(title,id)
         navigation.navigate('ArtPiece')
     }
-
 
     render() {
         return (
@@ -135,21 +110,6 @@ class SectionOverviewScreen extends React.Component {
                             </Text>
                         </TouchableOpacity>
                     </View>
-                    
-                    {/*
-                    <View>
-                        <DoubleClick
-                            singleTap={() => {
-                                console.log("single tap");
-                            }}
-                            doubleTap={() => this.onDoubleTap(this.props.navigation)}
-                            delay={300}
-                        >
-                            <Text style = {styles.header}>Section Screen</Text>
-                        </DoubleClick>
-                    </View>
-                    */}
-
                 </View>
             </GestureRecognizer>
         )
