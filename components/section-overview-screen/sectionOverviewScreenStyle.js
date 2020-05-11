@@ -68,6 +68,28 @@ const styles = StyleSheet.create({
     artPieceTitleButton: GlobalVariables.titleButton,
     artPieceTitleButtonText: GlobalVariables.buttonText,
     subheaderText: GlobalVariables.header,
+    artObjectButton: {
+        height: 70,
+        width: 300,
+        backgroundColor: 'white',
+        justifyContent: 'center',
+        borderColor: '#29acdc',
+        borderWidth: 3,
+        alignItems: 'center',
+        marginLeft: 20,
+        marginRight: 20,
+        marginTop: 20,
+        borderRadius: 10,
+    },
+    artObjectButtonView: {
+        alignItems: 'center',
+    },
+    artObjectButtonText: {
+        color: GlobalVariables.commonColors.color,
+        fontSize: 20
+    }
+
+    
 });
 
 

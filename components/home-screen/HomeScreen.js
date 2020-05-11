@@ -15,7 +15,6 @@ class HomeScreen extends React.Component {
     componentDidMount() {
         this.props.getAllArtPieces();
         let location = homeScreenService.getCurrentLocation();
-        console.log(location)
         this.setState({location: location})
     };
 
@@ -44,12 +43,15 @@ class HomeScreen extends React.Component {
         navigation.navigate('RoomOverview');
     }
 
+    navigateToRoomOverview = () => {
+        this.props.navigation.navigate('RoomOverview')
+    }
+
     render() {
-        console.log(styles.homePageHeader.color)
         return(
             <View style={styles.container} accessible={true}>
                 <GestureRecognizer
-                    onSwipe={(direction, state) => this.onSwipe(direction, this.props.navigation )}
+                    onSwipe={(direction, state) => this.onSwipe(direction, this.props.navigation)}
                     onSwipeLeft={(direction) => this.onSwipeLeft(direction, this.props.navigation)}
                 >
                     <Text style = {styles.homePageHeader}>
@@ -76,16 +78,20 @@ class HomeScreen extends React.Component {
                                 {"\n"}
                             </Text>
                             <Text style = {styles.subheaderText}>
-                                Room: {this.state.location}
+                                Room: Main
                             </Text>
                             <Text style = {styles.subheaderText}>
-                                Section: _____
+                                Section: 1
 
                             </Text>
                         </View>
-                        <TouchableOpacity style = {styles.sectionOverviewButton}>
+                        <TouchableOpacity 
+                            style = {styles.sectionOverviewButton} 
+                            onPress={this.navigateToRoomOverview}
+                            accessibilityLabel= "Click to Natigate to Room Overview Screen"
+                        >
                             <Text style = {styles.sectionOverviewButtonText}>
-                                Section Overview
+                                Room Overview
                             </Text>
                         </TouchableOpacity>
                         </View>

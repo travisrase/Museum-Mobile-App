@@ -26,7 +26,7 @@ class ArtPieceScreen extends React.Component {
     componentDidMount =  async () => {
         //Calling on the Redux Store
         let artPieceId = this.props.id;
-        let artPiece = await artPieceScreenService.getArtPieceInfo(artPieceId);
+        let information = artPieceScreenService.getArtPieceInfo(artPieceId);
         this.setState({
             title: artPiece.body.title,
             imageUrl: artPiece.body.image_url,

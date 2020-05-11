@@ -8,7 +8,9 @@ let screenHeight = Dimensions.get("window").height
 
 const styles = StyleSheet.create({
     container: {
-       height: screenHeight
+       height: screenHeight,
+       color: GlobalVariables.commonColors.color,
+
     },
     header: {
         color: GlobalVariables.commonColors.color,
@@ -18,42 +20,26 @@ const styles = StyleSheet.create({
         fontSize: 40,
         marginTop: 10
     },
-    bowdoinSeal: {
-        marginTop: 20,
-        width: 70,
+    zoneButton: {
         height: 70,
-        alignSelf: 'center'
-    },
-    blackPageView: {
-        backgroundColor: 'black',
-        height: 400,
-        marginLeft: 5,
-        marginRight: 5,
-        alignSelf: 'center',
-        marginTop: 60
-    },
-    whitePageView: {
+        width: 300,
         backgroundColor: 'white',
-        height: 380,
-        marginLeft: 10,
-        marginRight: 10,
-        alignSelf: 'center',
-        marginTop: 10
+        justifyContent: 'center',
+        borderColor: '#29acdc',
+        borderWidth: 3,
+        alignItems: 'center',
+        marginLeft: 20,
+        marginRight: 20,
+        marginTop: 20,
+        borderRadius: 10,
     },
-    subheaderText: {
-        color:GlobalVariables.commonColors.color,
-        textAlign: 'center',
-        fontStyle: 'normal',
-        fontWeight: 'bold',
-        fontSize: 25
+    zoneButtonView: {
+        alignItems: 'center',
     },
-    bodyText: {
-        color: 'black',
-        textAlign: 'center',
-        fontStyle: 'normal',
-        fontSize: 17
+    zoneButtonText: {
+        color: GlobalVariables.commonColors.color,
+        fontSize: 30
     }
-
 });
 
 
