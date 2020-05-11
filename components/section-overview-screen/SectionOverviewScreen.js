@@ -77,13 +77,12 @@ class SectionOverviewScreen extends React.Component {
                     <Text style = {styles.header}>
                         Zone 
                     </Text>
-
                     <ScrollView >
                         <View style = {styles.artObjectButtonView}>
                             {this.renderArtObjectButtons()}
                         </View>
                     </ScrollView>
-                    
+     
                 </View>
             </GestureRecognizer>
         )

@@ -1,29 +1,39 @@
 import * as WebBrowser from 'expo-web-browser';
 import * as React from 'react';
-import { Image, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
 import styles from "./artPieceScreenStyle";
 import GlobalVariables from '../../styles/variables';
 import {resetArtPiece} from './artPieceScreenActions';
 import { connect } from 'react-redux';
 import artPieceScreenService from './artPieceScreenService';
+import { Image, View, StyleSheet} from 'react-native';
+import { Dimensions } from 'react-native';
+import {  Card, CardItem, Text, } from 'native-base';
 
 class ArtPieceScreen extends React.Component {
 
     state = {
         title: '',
         medium: '',
-        dimensions: ''
+        dimensions: '',
+        descriptionBasic: '',
+        descriptionSpatial: '',
+        descriptionThematic: '',
+        imageUrl: '',
+        countryOrigin: ''
     };
 
-    componentDidMount() {
+    componentDidMount =  async () => {
         //Calling on the Redux Store
         let artPieceId = this.props.id;
         let information = artPieceScreenService.getArtPieceInfo(artPieceId);
         this.setState({
-            title: information.title,
-            medium: information.medium,
-            dimensions: information.dimensions
+            title: artPiece.body.title,
+            imageUrl: artPiece.body.image_url,
+            descriptionBasic: artPiece.body.description_basic,
+            descriptionThematic: artPiece.body.description_thematic,
+            descriptionSpatial: artPiece.body.description_spatial,
+            countryOrigin: artPiece.body.country_origin
         });
     };
 
@@ -58,53 +68,45 @@ class ArtPieceScreen extends React.Component {
     }
 
     render(){
-        return(
-            <GestureRecognizer
-                onSwipe={(direction, state) => this.onSwipe(direction, this.props.navigation )}
-                //onSwipeRight={(direction) => onSwipeRight(direction, navigation)}
-            >
-                <View style={styles.container}>
-                    <Text style = {GlobalVariables.navigationLabels}>
-                        Swipe Up To Return Home
-                    </Text>
-
-                    <Text style = {styles.header}>
-                        Apollo and Daphne
-                    </Text>
-                    <View style = {styles.columnLayout}>
-                        <Image 
-                            accessibile
-                            accessibilityLabel={'Depicts: Apollo and Daphne image'}
-                            accessibilityIgnoresInvertColors
-                            style = {styles.image}
-                            source={require('../../assets/images/Apollo-and-Daphne.png')}
-                        />
-                        <View style =
-                                  {{position: 'relative', top: '5%'}}>
-                            <Text style = {styles.bodyText}>
-                                Title: {this.state.title}
-                            </Text>
-                            <Text style = {styles.bodyText}>
-                                Medium: {this.state.medium}
-                            </Text>
-                            <Text style = {styles.bodyText}>
-                                Dimensions: {this.state.dimensions}
-                            </Text>
-                        </View>
+        const windowWidth = Dimensions.get('window').width;
+        const windowHeight = Dimensions.get('window').height;
+        let imageHieght = windowHeight/2
+        if(this.state.imageUrl === ''){
+            return (<View></View>)
+        } else {
+            return(
+                <GestureRecognizer
+                    onSwipe={(direction, state) => this.onSwipe(direction, this.props.navigation )}
+                    //onSwipeRight={(direction) => onSwipeRight(direction, navigation)}
+                >
+                    <View>
+                        <Card>
+                            <CardItem header border>
+                                <Text> Title: {this.state.title}</Text>
+                            </CardItem>
+                            <CardItem>
+                                <Image source={{uri: this.state.imageUrl}} style={{height: imageHieght, width: windowWidth, flex: 1}}/>
+                            </CardItem>
+                            <CardItem>
+                                <Text> Country of Origin: {this.state.countryOrigin}</Text>
+                            </CardItem>
+                        </Card>
                     </View>
                     <Text style = {GlobalVariables.navigationLabels}>
                         Swipe Down To Access Descriptions
                     </Text>
-                </View>
-            </GestureRecognizer>
-        )
+                </GestureRecognizer>
+            )
+        }
     }
 }
+
 //Get props from redux state 
 const mapStateToProps = state => ({
     title: state.artPieceData.title,
     id: state.artPieceData.id
 
 });
+
 //Connect both state (props) and function (dispatches) to Component; 
-    export default connect(mapStateToProps, {resetArtPiece})(ArtPieceScreen);
+export default connect(mapStateToProps, {resetArtPiece})(ArtPieceScreen);
