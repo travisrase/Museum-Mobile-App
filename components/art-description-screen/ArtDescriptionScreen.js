@@ -5,6 +5,7 @@ import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
 import DoubleClick from "react-native-double-tap";
 import styles from "./ArtDescriptionScreenStyles";
 //import Tts from 'react-native-tts';
+import {connect} from 'react-redux';
 import * as Speech from 'expo-speech'
 import GlobalVariables from '../../styles/variables';
 import artDescriptionScreenService from "./ArtDescriptionScreenService";
@@ -20,12 +21,11 @@ class ArtDescriptionScreen extends React.Component {
     };
 
     componentDidMount() {
-        let information = artDescriptionScreenService.getArtPieceDescriptions();
         this.setState({
-            title: information.title,
-            basic: information.basic,
-            spatial: information.spatial,
-            thematic: information.thematic
+            title: this.props.title,
+            basic: this.props.basic,
+            spatial: this.props.spatial,
+            thematic: this.props.thematic
         });
     };
 
@@ -122,4 +122,12 @@ class ArtDescriptionScreen extends React.Component {
         )
     }
 }
-export default ArtDescriptionScreen;
+
+const mapStateToProps = state => ({
+    title: state.artPieceData.title,
+    id: state.artPieceData.id,
+    basic: state.artPieceData.descriptionBasic,
+    spatial: state.artPieceData.descriptionSpatial,
+    thematic: state.artPieceData.descriptionThematic
+});
+export default connect(mapStateToProps, null)(ArtDescriptionScreen);

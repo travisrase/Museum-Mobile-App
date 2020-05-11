@@ -24,6 +24,17 @@ export const setArtPiece = (title, id) => dispatch =>{
     })
 };
 
+export const setArtPieceDescriptions = (basic, spatial, thematic) => dispatch =>{
+    var descriptionObject = {}
+    descriptionObject['descriptionBasic'] = basic;
+    descriptionObject['descriptionSpatial'] = spatial;
+    descriptionObject['descriptionThematic'] = thematic;
+    dispatch({
+        type: 'SET_ART_PIECE_DESCRIPTIONS',
+        payload: descriptionObject
+    })
+};
+
 export const resetArtPiece = () => dispatch => {
     dispatch({
         type: "RESET_ART_PIECE"

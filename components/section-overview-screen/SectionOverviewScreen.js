@@ -87,7 +87,7 @@ class SectionOverviewScreen extends React.Component {
                                 singleTap={() => {
                                     console.log("single tap");
                                 }}
-                                doubleTap={() => this.onDoubleTap(this.props.navigation, this.state.title1, 11)}
+                                doubleTap={() => this.onDoubleTap(this.props.navigation, this.state.title1, 231)}
                                 delay={300}
                             >
                                 <Text style = {styles.buttonText}>

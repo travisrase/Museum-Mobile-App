@@ -3,12 +3,14 @@ import * as React from 'react';
 import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
 import styles from "./artPieceScreenStyle";
 import GlobalVariables from '../../styles/variables';
-import {resetArtPiece} from './artPieceScreenActions';
+import {resetArtPiece, setArtPieceDescriptions} from './artPieceScreenActions';
 import { connect } from 'react-redux';
 import artPieceScreenService from './artPieceScreenService';
-import { Image, View, StyleSheet} from 'react-native';
+import {Image, View, StyleSheet, TouchableOpacity} from 'react-native';
 import { Dimensions } from 'react-native';
 import {  Card, CardItem, Text, } from 'native-base';
+import DoubleClick from "react-native-double-tap";
+import * as Speech from "expo-speech";
 
 class ArtPieceScreen extends React.Component {
 
@@ -35,11 +37,13 @@ class ArtPieceScreen extends React.Component {
             descriptionSpatial: artPiece.body.description_spatial,
             countryOrigin: artPiece.body.country_origin
         });
+        this.props.setArtPieceDescriptions(artPiece.body.description_basic,artPiece.body.description_spatial,artPiece.body.description_thematic);
     };
 
     //store piece title etc as variables
     //make this class a type of interface? not sure proper term
     //so that it can be replicated
+
 
 
     onSwipe(gestureName, navigation) {
@@ -71,26 +75,34 @@ class ArtPieceScreen extends React.Component {
         const windowWidth = Dimensions.get('window').width;
         const windowHeight = Dimensions.get('window').height;
         let imageHieght = windowHeight/2
-        if(this.state.imageUrl === ''){
-            return (<View></View>)
-        } else {
             return(
                 <GestureRecognizer
                     onSwipe={(direction, state) => this.onSwipe(direction, this.props.navigation )}
                     //onSwipeRight={(direction) => onSwipeRight(direction, navigation)}
                 >
                     <View>
-                        <Card>
-                            <CardItem header border>
-                                <Text> Title: {this.state.title}</Text>
-                            </CardItem>
-                            <CardItem>
-                                <Image source={{uri: this.state.imageUrl}} style={{height: imageHieght, width: windowWidth, flex: 1}}/>
-                            </CardItem>
-                            <CardItem>
-                                <Text> Country of Origin: {this.state.countryOrigin}</Text>
-                            </CardItem>
-                        </Card>
+                        <DoubleClick
+                            singleTap={() => {
+                                console.log("single tap");
+                            }}
+                            doubleTap={() => {Speech.speak(this.state.descriptionBasic)}}
+                            delay={300}
+                        >
+                            <Card>
+                                <CardItem header border>
+                                    <Text> Title: {this.state.title}</Text>
+                                </CardItem>
+                                <CardItem>
+                                    <Image source={{uri: this.state.imageUrl}} style={{height: imageHieght, width: windowWidth, flex: 1}}/>
+                                </CardItem>
+                                <CardItem>
+                                    <Text> Country of Origin: {this.state.countryOrigin}</Text>
+                                </CardItem>
+                                <CardItem>
+                                    <Text> Description: {this.state.descriptionBasic}</Text>
+                                </CardItem>
+                            </Card>
+                        </DoubleClick>
                     </View>
                     <Text style = {GlobalVariables.navigationLabels}>
                         Swipe Down To Access Descriptions
@@ -98,7 +110,7 @@ class ArtPieceScreen extends React.Component {
                 </GestureRecognizer>
             )
         }
-    }
+    
 }
 
 //Get props from redux state 
@@ -109,4 +121,4 @@ const mapStateToProps = state => ({
 });
 
 //Connect both state (props) and function (dispatches) to Component; 
-export default connect(mapStateToProps, {resetArtPiece})(ArtPieceScreen);
+export default connect(mapStateToProps, {resetArtPiece, setArtPieceDescriptions})(ArtPieceScreen);
