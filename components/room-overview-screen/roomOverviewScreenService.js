@@ -3,7 +3,6 @@ import axios from "axios";
 const baseUrl = 'https://cs2345-db-api.herokuapp.com';
 
 async function getZones() {
-    console.log("Get zones called");
     const headers = {
         'Content-Type': 'application/json',
     };

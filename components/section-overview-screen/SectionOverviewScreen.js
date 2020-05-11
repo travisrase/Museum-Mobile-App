@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, Platform, StyleSheet, Text, TouchableOpacity, View, Button } from 'react-native';
+import { Image, Platform, StyleSheet, Text, TouchableOpacity, View, Button, ScrollView } from 'react-native';
 import GestureRecognizer, { swipeDirections } from "react-native-swipe-gestures";
 import DoubleClick from "react-native-double-tap";
 import sectionOverviewScreenService from "./sectionOverviewScreenService";
@@ -11,12 +11,14 @@ import {setArtPiece} from '../art-piece-screen/artPieceScreenActions';
 class SectionOverviewScreen extends React.Component {
 
     state = {
-        zone: null
+        artObjects: []
     };
 
-    componentDidMount() {
-        this.setState({zone: this.props.zone})
-        console.log()
+    async componentDidMount() {
+        const response = await sectionOverviewScreenService.getZoneArt(this.props.zone);
+        const artObjects = response.body.zone.art_objects;
+        this.setState({artObjects:artObjects})
+        console.log("Zone: ", this.props.zone)
     };
 
     onSwipe(gestureName, navigation) {
@@ -42,79 +44,56 @@ class SectionOverviewScreen extends React.Component {
         navigation.navigate('ArtPiece')
     }
 
+    artObjectButtonPress = (title,id)=> event => {   
+        this.props.setArtPiece(title,id)
+        this.props.navigation.navigate('ArtPiece')
+    }
+
+    renderArtObjectButtons = () => {
+        const views = [];
+        for ( var i =0; i<this.state.artObjects.length; i++){
+         views.push(
+            <TouchableOpacity
+               key={this.state.artObjects[i].id}
+               onPress={this.artObjectButtonPress(this.state.artObjects[i].title,this.state.artObjects[i].id)}
+               style={styles.artObjectButton}
+               accessibilityLabel= {"Click to Natigate to Learn more about Art Object: " + this.state.artObjects[i].title}
+            >
+                <Text style = {styles.artObjectButtonText}>
+                    {this.state.artObjects[i].title}
+                </Text>
+            </TouchableOpacity>
+        );
+        } 
+        return views;
+    }
+
     render() {
         return (
             <GestureRecognizer
                 onSwipe={(direction, state) => this.onSwipe(direction, this.props.navigation)}
             >
                 <View style={styles.container}>                 
-                    <Text style = {GlobalVariables.navigationLabels}>
-                        Swipe Up To Return Home
-                    </Text>
-
                     <Text style = {styles.header}>
-                        Section 1
+                        Zone 
                     </Text>
 
-                    <View style = {styles.columnLayout}>
-                        <TouchableOpacity style = {styles.artPieceTitleButton}>
-                            <DoubleClick
-                                singleTap={() => {
-                                    console.log("single tap");
-                                }}
-                                doubleTap={() => this.onDoubleTap(this.props.navigation, this.state.title1, 1)}
-                                delay={300}
-                            >
-                                <Text style = {styles.buttonText}>
-                                    {this.state.title1} 
-                                </Text>
-                            </DoubleClick>
-                        </TouchableOpacity>
-
-                        <TouchableOpacity style = {styles.artPieceTitleButton}>
-                            {/* need to add in DOUBLE TAP layer */}
-                            <Text style = {styles.buttonText}>
-                                {this.state.title2} 
-                            </Text>
-                        </TouchableOpacity>
-                    </View>
+                    <ScrollView >
+                        <View style = {styles.artObjectButtonView}>
+                            {this.renderArtObjectButtons()}
+                        </View>
+                    </ScrollView>
                     
-                    <View style = {styles.columnLayout}>
-                        <TouchableOpacity style = {styles.artPieceTitleButton}>
-                            {/* need to add in DOUBLE TAP layer */}
-                            <Text style = {styles.buttonText}>
-                                {this.state.title3} 
-                            </Text>
-                        </TouchableOpacity>
-
-                        <TouchableOpacity style = {styles.artPieceTitleButton}>
-                            {/* need to add in DOUBLE TAP layer */}
-                            <Text style = {styles.buttonText}>
-                                {this.state.title4} 
-                            </Text>
-                        </TouchableOpacity>
-                    </View>
-
-                    <View style = {styles.columnLayout}>
-                        <TouchableOpacity style = {styles.artPieceTitleButton}>
-                            {/* need to add in DOUBLE TAP layer */}
-                            <Text style = {styles.buttonText}>
-                                {this.state.title5} 
-                            </Text>
-                        </TouchableOpacity>
-
-                        <TouchableOpacity style = {styles.artPieceTitleButton}>
-                            {/* need to add in DOUBLE TAP layer */}
-                            <Text style = {styles.buttonText}>
-                                {this.state.title6} 
-                            </Text>
-                        </TouchableOpacity>
-                    </View>
                 </View>
             </GestureRecognizer>
         )
     }
 }
 
+const mapStateToProps = state => ({
+    zone: state.zoneData.zone
+
+});
+
 //You have to connect the component to the Redux Store.
-export default connect(null, {setArtPiece})(SectionOverviewScreen);
+export default connect(mapStateToProps, {setArtPiece})(SectionOverviewScreen);

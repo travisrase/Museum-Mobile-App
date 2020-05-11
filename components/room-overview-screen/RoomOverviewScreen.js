@@ -52,13 +52,18 @@ class RoomOverviewScreen extends React.Component {
         this.setState({zones:zones})
     }
 
+    zoneButtonPress = id => event => {   
+        this.props.setZone(id)
+        this.props.navigation.navigate('SectionOverview')
+    }
+
     renderZoneButtons = () => {
         const views = [];
         for ( var i =0; i<this.state.zones.length; i++){
          views.push(
             <TouchableOpacity
                key={this.state.zones[i].id}
-               onPress={setZone(1)}
+               onPress={this.zoneButtonPress(this.state.zones[i].id)}
                style={styles.zoneButton}
                accessibilityLabel= {"Click to Natigate to Learn more about Zone: " + this.state.zones[i]}
             >

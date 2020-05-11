@@ -15,7 +15,6 @@ class HomeScreen extends React.Component {
     componentDidMount() {
         this.props.getAllArtPieces();
         let location = homeScreenService.getCurrentLocation();
-        console.log(location)
         this.setState({location: location})
     };
 
@@ -45,12 +44,10 @@ class HomeScreen extends React.Component {
     }
 
     navigateToRoomOverview = () => {
-        console.log("pressed")
         this.props.navigation.navigate('RoomOverview')
     }
 
     render() {
-        console.log(styles.homePageHeader.color)
         return(
             <View style={styles.container} accessible={true}>
                 <GestureRecognizer
