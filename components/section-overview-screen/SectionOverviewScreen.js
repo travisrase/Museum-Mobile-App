@@ -44,7 +44,7 @@ class SectionOverviewScreen extends React.Component {
         navigation.navigate('ArtPiece')
     }
 
-    artObjectButtonPress = (title,id)=> event => {   
+    artObjectButtonPress = (title,id)=> event => {
         this.props.setArtPiece(title,id)
         this.props.navigation.navigate('ArtPiece')
     }
@@ -85,7 +85,6 @@ class SectionOverviewScreen extends React.Component {
                             {this.renderArtObjectButtons()}
                         </View>
                     </ScrollView>
-    
                 </View>
             </GestureRecognizer>
         )
