@@ -1,7 +1,10 @@
 const initialState = {
     artPieces: [],
     title: '',
-    id: null
+    id: null,
+    descriptionBasic: '',
+    descriptionSpatial: '',
+    descriptionThematic: ''
 };
 
 export const artPieceScreenReducer = (state = initialState, action) => {
@@ -21,6 +24,13 @@ export const artPieceScreenReducer = (state = initialState, action) => {
                 ...state,
                 title: action.payload.title,
                 id: action.payload.id
+            }
+        case('SET_ART_PIECE_DESCRIPTIONS'):
+            return {
+                ...state,
+                descriptionBasic: action.payload.descriptionBasic,
+                descriptionSpatial:  action.payload.descriptionSpatial,
+                descriptionThematic: action.payload.descriptionThematic
             }
         case("RESET_ART_PIECE"):
             return initialState;
