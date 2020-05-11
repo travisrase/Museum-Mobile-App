@@ -1,23 +1,35 @@
+import axios from "axios";
 
-function getTitle1() {
-    return {title: 'Apollo and Daphne',}};
+const baseUrl = 'https://cs2345-db-api.herokuapp.com';
 
-function getTitle2() {
-    return {title: 'Fish Shambles',}};
+async function getZoneArt(id) {
+    const headers = {
+        'Content-Type': 'application/json',
+    };
+    return axios({
+        method: 'get',
+        url: baseUrl + '/zones/' + id,
+        headers: headers
+    })
+    .then((response) => {
+        return {
+            'status': 'success',
+            'body' : response.data
+        }
+    })
+    .catch((error) => {
+        let e = error;
+        if(e === null || e === undefined){
+            e = "server error";
+        }
+        console.log(e);
+        return {
+            'status': 'failed',
+            'body': []
+        }
+    })
+};
 
-function getTitle3() {
-    return {title: 'St. Peter Delivered from Prison by an Angel',}};
-
-function getTitle4() {
-    return {title: 'Madonna of the Rosary',}};
-
-function getTitle5() {
-    return {title: 'Christ Cleansing the Temple',}};
-
-function getTitle6() {
-    return {title: 'Portrait of Geri della Rena',}};
-
-const sectionOverviewScreenService = {
-    getTitle1,getTitle2,getTitle3,getTitle4,getTitle5,getTitle6,};
+const sectionOverviewScreenService = {getZoneArt};
 
 export default sectionOverviewScreenService;

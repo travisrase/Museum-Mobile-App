@@ -5,7 +5,7 @@ export const getAllArtPieces = () => async dispatch => {
     if(response.status === 'success') {
         dispatch({
             type: 'GET_ALL_ART_OBJECTS',
-            payload: response.body
+            payload: []
         });
     } else {
         dispatch({
@@ -40,3 +40,6 @@ export const resetArtPiece = () => dispatch => {
         type: "RESET_ART_PIECE"
     })
 };
+
+
+//response.body
