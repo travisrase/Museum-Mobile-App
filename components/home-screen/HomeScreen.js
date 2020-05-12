@@ -78,10 +78,10 @@ class HomeScreen extends React.Component {
                                 {"\n"}
                             </Text>
                             <Text style = {styles.subheaderText}>
-                                Room: Main
+                                Room: Bowdoin Gallery
                             </Text>
                             <Text style = {styles.subheaderText}>
-                                Section: 1
+                                Zone: 1
 
                             </Text>
                         </View>
