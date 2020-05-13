@@ -5,6 +5,8 @@ import homeScreenService from "./homeScreenService";
 import GlobalVariables from '../../styles/variables';
 import { getAllArtPieces} from "../art-piece-screen/artPieceScreenActions";
 import {connect} from 'react-redux';
+import DoubleClick from "react-native-double-tap";
+import * as Speech from "expo-speech";
 import styles from "./homeScreenStyle";
 
 class HomeScreen extends React.Component {
@@ -49,7 +51,7 @@ class HomeScreen extends React.Component {
 
     render() {
         return(
-            <View style={styles.container} accessible={true}>
+            <View style={styles.container}>
                 <GestureRecognizer
                     onSwipe={(direction, state) => this.onSwipe(direction, this.props.navigation)}
                     onSwipeLeft={(direction) => this.onSwipeLeft(direction, this.props.navigation)}
@@ -61,9 +63,21 @@ class HomeScreen extends React.Component {
                         style={styles.bowdoinSeal}
                         source={require('../../assets/images/Bowdoin_Seal.png')}
                     />
-                    <Text style = {GlobalVariables.navigationLabels}>
-                        Swipe Left for Overview of Room
-                    </Text>
+                    <TouchableOpacity
+                        accessible = {true}
+                        accessibilityLabel = "Select this element for app navigation instructions"
+                        style = {GlobalVariables.navigationButton}>
+                        <DoubleClick
+                                singleTap={() => {Speech.speak(
+                                    'Swipe left to navigate forward one screen. Swipe right to navigate back one screen. Select zone buttons to learn more about individual zones. Select art piece buttons to learn more about each art piece. '
+                                )}}
+                            >
+                        <Text style = {GlobalVariables.navigationText}>
+                            Navigation Instructions
+                        </Text>
+                        </DoubleClick>
+                    </TouchableOpacity>
+
 
                     <View style = {styles.blackPageView}>
 
@@ -85,10 +99,11 @@ class HomeScreen extends React.Component {
 
                             </Text>
                         </View>
-                        <TouchableOpacity 
+                    
+                        <TouchableOpacity accessible = {true}
                             style = {styles.sectionOverviewButton} 
                             onPress={this.navigateToRoomOverview}
-                            accessibilityLabel= "Click to Natigate to Room Overview Screen"
+                            accessibilityLabel= "Select this element to navigate to Room Overview Screen"
                         >
                             <Text style = {styles.sectionOverviewButtonText}>
                                 Room Overview

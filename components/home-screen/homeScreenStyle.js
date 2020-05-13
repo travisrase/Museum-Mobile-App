@@ -2,10 +2,13 @@ import {Dimensions, StyleSheet} from "react-native";
 import GlobalVariables from '../../styles/variables'
 
 let screenHeight = Dimensions.get("window").height
+let screenWidth = Dimensions.get("window").width
 
 const styles = StyleSheet.create({
     container: {
-        height: screenHeight
+        height: screenHeight,
+        width: screenWidth,
+        resizeMode: 'contain'
     },
     homePageHeader: {
         color: GlobalVariables.commonColors.color,
@@ -48,7 +51,7 @@ const styles = StyleSheet.create({
         height: 150,
         width: '75%',
         // marginTop: 50,
-        marginTop: '5%',
+        marginTop: '3%',
         borderWidth: 3,
         borderColor: 'black',
         borderRadius: 5,
