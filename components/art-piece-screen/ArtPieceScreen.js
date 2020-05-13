@@ -53,11 +53,13 @@ class ArtPieceScreen extends React.Component {
             case SWIPE_UP:
                 //Calling function from redux to reset the art piece data
                 this.props.resetArtPiece();
+                Speech.stop()
                 navigation.navigate('Home')
                 // this.setState({backgroundColor: 'red'});
                 break;
             case SWIPE_DOWN:
                 console.log("DOWN")
+                Speech.stop()
                 navigation.navigate('ArtDescription')
                 //  this.setState({backgroundColor: 'green'});
                 break;
@@ -66,6 +68,7 @@ class ArtPieceScreen extends React.Component {
                 //this.setState({backgroundColor: 'blue'});
                 break;
             case SWIPE_RIGHT:
+                Speech.stop()
                 navigation.navigate('SectionOverview')
                 break;
         }
@@ -82,18 +85,16 @@ class ArtPieceScreen extends React.Component {
                 >
                     <View>
                         <DoubleClick
-                            singleTap={() => {
-                                console.log("single tap");
-                            }}
                             doubleTap={() => {Speech.speak(this.state.descriptionBasic)}}
                             delay={300}
                         >
                             <Card>
                                 <CardItem header border>
-                                    <Text> Title: {this.state.title}</Text>
+                                    <Text style = {GlobalVariables.header}> Title: {this.state.title}</Text>
                                 </CardItem>
                                 <CardItem>
-                                    <Image source={{uri: this.state.imageUrl}} style={{height: imageHieght, width: windowWidth, flex: 1}}/>
+                                    <Image source={{uri: this.state.imageUrl}} 
+                                           style={{height: imageHieght/1.3, width: windowWidth, flex: 1, resizeMode: 'contain'}}/>
                                 </CardItem>
                                 <CardItem>
                                     <Text> Country of Origin: {this.state.countryOrigin}</Text>
@@ -104,9 +105,19 @@ class ArtPieceScreen extends React.Component {
                             </Card>
                         </DoubleClick>
                     </View>
-                    <Text style = {GlobalVariables.navigationLabels}>
-                        Swipe Down To Access Descriptions
-                    </Text>
+                    <TouchableOpacity style = {GlobalVariables.navigationButton}
+                        accessible = {true}
+                        accessibilityLabel = 'Select this element to access more descriptions'
+                        >
+                        <DoubleClick
+                          singleTap={() => {Speech.speak('Double tap the screen to hear the basic description. Swipe down from top of screen to access more descriptions. Swipe left to go back.')}}
+                          delay={300}
+                          >
+                        <Text style = {GlobalVariables.navigationText}>
+                            Speak Navigation Instructions
+                        </Text>
+                        </DoubleClick>
+                    </TouchableOpacity>
                 </GestureRecognizer>
             )
         }

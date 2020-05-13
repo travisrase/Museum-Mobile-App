@@ -33,6 +33,7 @@ class HomeScreen extends React.Component {
                 //  this.setState({backgroundColor: 'green'});
                 break;
             case SWIPE_LEFT:
+                Speech.stop()
                 navigation.navigate('RoomOverview')
                 //  this.setState({backgroundColor: 'blue'});
                 break;
@@ -68,12 +69,14 @@ class HomeScreen extends React.Component {
                         accessibilityLabel = "Select this element for app navigation instructions"
                         style = {GlobalVariables.navigationButton}>
                         <DoubleClick
-                                singleTap={() => {Speech.speak(
-                                    'Swipe left to navigate forward one screen. Swipe right to navigate back one screen. Select zone buttons to learn more about individual zones. Select art piece buttons to learn more about each art piece. '
+                                singleTap={() => {Speech.stop(), Speech.speak(
+                                    'Swipe left to navigate forward one screen. Swipe right to navigate back one screen. If voiceover is on, hold down and drag around screen to select different objects. Select zone buttons to learn more about individual zones. Select art piece buttons to learn more about each art piece.',
+                                    
                                 )}}
+                                
                             >
                         <Text style = {GlobalVariables.navigationText}>
-                            Navigation Instructions
+                           Speak Navigation Instructions
                         </Text>
                         </DoubleClick>
                     </TouchableOpacity>

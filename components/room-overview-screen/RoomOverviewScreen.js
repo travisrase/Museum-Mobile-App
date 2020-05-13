@@ -29,7 +29,7 @@ class RoomOverviewScreen extends React.Component {
                 navigation.navigate('SectionOverview')
                 break;
             case SWIPE_RIGHT:
-                navigation.navigate('Home')
+                //navigation.navigate('Home')
                 break;
         }
     }
