@@ -39,11 +39,11 @@ const styles = StyleSheet.create({
         //borderColor: 'black'
     },
     image: {
-        flexShrink: 1,
-        width: '75%',
-        height: '65%',
-        marginTop: 5,
-        marginBottom: 0,
+        flex: 1,
+        width: '50%',
+        height: '50%',
+        //marginTop: 5,
+        //marginBottom: 0,
         //marginRight:10,
         //marginLeft:10,
         resizeMode:'contain',

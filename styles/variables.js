@@ -11,7 +11,26 @@ export default GlobalVariables = {
     container: {
         marginTop: 150,
         backgroundColor: 'blue',
-        flexWrap: 'wrap'
+        flexWrap: 'wrap',
+        height: height,
+        width: width
+    },
+    navigationButton:{
+        height: 30,
+        width: 250,
+        backgroundColor: 'white',
+        justifyContent: 'center',
+        alignSelf: 'center',
+        borderColor: 'black',
+        borderWidth: 3,
+        borderRadius: 5,
+        marginTop: 5
+    },
+    navigationText:{
+        fontSize: 20,
+        color: 'black',
+        fontWeight: 'bold',
+        textAlign: 'center'
     },
     primaryButton: {
         height: 60,
@@ -87,6 +106,7 @@ export default GlobalVariables = {
         color: '#29acdc',
         fontWeight: 'bold',
         fontSize: 25,
+        alignSelf: 'center',
         textAlign: 'center',
     },
     body: {

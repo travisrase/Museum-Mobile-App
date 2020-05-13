@@ -29,7 +29,7 @@ class RoomOverviewScreen extends React.Component {
                 navigation.navigate('SectionOverview')
                 break;
             case SWIPE_RIGHT:
-                navigation.navigate('Home')
+                //navigation.navigate('Home')
                 break;
         }
     }
@@ -58,6 +58,7 @@ class RoomOverviewScreen extends React.Component {
     }
 
     renderZoneButtons = () => {
+        console.log(this.state.zones)
         const views = [];
         for ( var i =0; i<this.state.zones.length; i++){
          views.push(
@@ -65,7 +66,7 @@ class RoomOverviewScreen extends React.Component {
                key={this.state.zones[i].id}
                onPress={this.zoneButtonPress(this.state.zones[i].id)}
                style={styles.zoneButton}
-               accessibilityLabel= {"Click to Natigate to Learn more about Zone: " + this.state.zones[i]}
+               accessibilityLabel= {"Select this element to learn more about " + this.state.zones[i].name}
             >
                 <Text style = {styles.zoneButtonText}>
                     {this.state.zones[i].name}

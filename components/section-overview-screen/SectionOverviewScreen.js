@@ -57,7 +57,7 @@ class SectionOverviewScreen extends React.Component {
                key={this.state.artObjects[i].id}
                onPress={this.artObjectButtonPress(this.state.artObjects[i].title,this.state.artObjects[i].id)}
                style={styles.artObjectButton}
-               accessibilityLabel= {"Click to Natigate to Learn more about Art Object: " + this.state.artObjects[i].title}
+               accessibilityLabel= {"Click to Navigate to Learn more about Art Object: " + this.state.artObjects[i].title}
             >
                 <Text style = {styles.artObjectButtonText}>
                     {this.state.artObjects[i].title}
@@ -75,11 +75,9 @@ class SectionOverviewScreen extends React.Component {
             >
                 <View style={styles.container}>                 
                     <Text style = {styles.header}>
-                        Zone 
+                       Zone
                     </Text>
 
-
-                
                     <ScrollView >
                         <View style = {styles.artObjectButtonView}>
                             {this.renderArtObjectButtons()}
