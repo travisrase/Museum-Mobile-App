@@ -16,8 +16,8 @@ export default GlobalVariables = {
         width: width
     },
     navigationButton:{
-        height: 30,
-        width: 250,
+        height: '7%',
+        width: '90%',
         backgroundColor: 'white',
         justifyContent: 'center',
         alignSelf: 'center',
@@ -105,7 +105,7 @@ export default GlobalVariables = {
     header: {
         color: '#29acdc',
         fontWeight: 'bold',
-        fontSize: 25,
+        fontSize: 30,
         alignSelf: 'center',
         textAlign: 'center',
     },

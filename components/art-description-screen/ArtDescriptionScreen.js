@@ -66,7 +66,7 @@ class ArtDescriptionScreen extends React.Component {
             //onSwipeRight={(direction) => onSwipeRight(direction, navigation)}
             >
                 <View style={styles.container}>
-                    <Text style={styles.header}>
+                    <Text style={GlobalVariables.header}>
                         {this.state.title}
                     </Text>
                     <View style={styles.columnLayout}>

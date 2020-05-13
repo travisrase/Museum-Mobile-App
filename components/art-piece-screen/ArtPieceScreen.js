@@ -90,7 +90,7 @@ class ArtPieceScreen extends React.Component {
                         >
                             <Card>
                                 <CardItem header border>
-                                    <Text style = {GlobalVariables.header}> Title: {this.state.title}</Text>
+                                    <Text style = {GlobalVariables.header}>  {this.state.title}</Text>
                                 </CardItem>
                                 <CardItem>
                                     <Image source={{uri: this.state.imageUrl}} 

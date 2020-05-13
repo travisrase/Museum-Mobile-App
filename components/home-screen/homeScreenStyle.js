@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
         backgroundColor: GlobalVariables.greyColor,
         alignSelf: 'center',
         // height: '50%',
-        height: 150,
+        height: '50%',
         width: '95%',
         // marginTop: 50,
         marginTop: '3%',
@@ -58,7 +58,13 @@ const styles = StyleSheet.create({
     },
     sectionOverviewButton: GlobalVariables.primaryButton,
     sectionOverviewButtonText: GlobalVariables.buttonText,
-    subheaderText: GlobalVariables.header,
+    subheaderText: {
+        color: '#29acdc',
+        fontWeight: 'bold',
+        fontSize: 25,
+        alignSelf: 'center',
+        textAlign: 'center',
+    },
 
 });
 

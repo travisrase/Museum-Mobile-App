@@ -91,8 +91,8 @@ class HomeScreen extends React.Component {
 
                         <View style = {styles.locationView}>
                             <Text style = {styles.subheaderText}>
-                                Your Location
-                                {"\n"}
+                                Your Location is:
+                                
                             </Text>
                             <Text style = {styles.subheaderText}>
                                 Room: Bowdoin Gallery
